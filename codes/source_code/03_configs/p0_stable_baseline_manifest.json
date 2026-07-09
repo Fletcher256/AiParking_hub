@@ -1,0 +1,54 @@
+{
+  "schema": "parking.p0_stable_baseline_manifest.v1",
+  "baseline_id": "p0_rollout_optimizer_stable_20260708",
+  "updated": "2026-07-07",
+  "purpose": "Freeze the current line_follow reverse-parking chain as the local/offline P0 stable baseline before further optimization.",
+  "active_control_chain": "configs/active_parking_control_chain.json",
+  "active_chain_id": "rollout_optimizer",
+  "default_runtime_contract": {
+    "controller": "/opt/parking/autopark/board_parking_controller.py",
+    "strategy": "diy_first_frame_path_parking",
+    "profile": "h1_structured_phase_parking",
+    "structured_decision": "line_follow",
+    "yolo_udp": "127.0.0.1:24580",
+    "stm32_tty": "/dev/ttyUSB0",
+    "button_trigger": "CTR_PK"
+  },
+  "required_local_files": [
+    "tools/board_parking_controller.py",
+    "tools/parking_controller_core.py",
+    "tools/parking_line_follow_decision.py",
+    "tools/parking_fusion.py",
+    "tools/parking_line_accumulator.py",
+    "tools/parking_kinematic_lattice.py",
+    "tools/board_stm32_button_autopark.py",
+    "tools/parking_web_controller.py",
+    "tools/run_recorded_line_follow_demo.py",
+    "configs/active_parking_control_chain.json",
+    "configs/chassis_kinematics.json",
+    "configs/chassis_signs.json",
+    "configs/parking_success_criteria.json",
+    "configs/perception_filter.json"
+  ],
+  "offline_regression_command": ".\\.venv\\Scripts\\python.exe tools\\p0_baseline_validate.py",
+  "offline_unittest_modules": [
+    "tools.test_parking_controller_core",
+    "tools.test_parking_line_follow_decision",
+    "tools.test_h1_line_follow_integration",
+    "tools.test_perception_filter",
+    "tools.test_parking_line_accumulator"
+  ],
+  "forbidden_default_chains": [
+    "h1_lattice_mpc",
+    "path_template_planner"
+  ],
+  "deployment_note": "Board deployment must copy parking_controller_core.py together with board_parking_controller.py; do not deploy only the monolithic controller file.",
+  "control_chain": {
+    "structured_decision": "rollout_optimizer"
+  },
+  "required_files": [
+    "configs/parking_rollout_optimizer_h1.json",
+    "tools/parking_rollout_optimizer.py",
+    "tools/test_parking_rollout_optimizer.py"
+  ]
+}

@@ -1,0 +1,89 @@
+OS08A20 + GS1860 Combined Binary Build Guide
+============================================
+
+Goal: Build sample_os08a20_dtof — runs OS08A20 camera (H264 FIFO) and
+      GS1860 dToF (UDP) simultaneously in a single process.
+
+Usage on board: ./sample_os08a20_dtof 1 <vm_ip>
+  sns_num=1 → camera i2c=5, dToF i2c=4
+
+Key differences from original imx347.c:
+  - SUPPORT_RGB=1 (camera enabled)
+  - _SUPPORT_RTSP_=0 (no livertsp dependency)
+  - Sensor type: OV_OS08A20 (not IMX347)
+  - No LANE_DIVIDE_MODE_2 override for OS08A20
+  - VO (HDMI) failure is non-fatal → runs headless
+
+=======================================================
+OPTION A: Cross-compile on VM (Ubuntu/WSL2) — PREFERRED
+=======================================================
+
+1. Install cross-compiler for OpenEuler:
+   sudo apt update
+   sudo apt install gcc-aarch64-linux-gnu  # fallback if openeuler cc not available
+   # OR get arm-openeuler-linux-gnueabi-gcc from the HiSilicon toolchain package
+
+2. Put the SS928 SDK at a known path (e.g. /opt/SS928_SDK):
+   cp -r <windows>/vendor/SS928V100_SDK_V2.0.2.2_MPP_Sample-master /opt/SS928_SDK
+   # OR from Windows: /mnt/d/parking_board_agent/vendor/SS928V100_SDK_V2.0.2.2_MPP_Sample-master
+
+3. Put open_camera at a known path (e.g. /opt/open_camera):
+   cp -r <windows>/vendor/HiEuler_open_camera_fresh_unzip/open_camera-master /opt/open_camera
+
+4. Run setup_build.sh:
+   chmod +x setup_build.sh
+   ./setup_build.sh /opt/SS928_SDK /opt/open_camera
+
+   This creates /opt/SS928_SDK/src/os08a20_dtof/ and builds.
+
+5. Deploy binary to board:
+   scp /opt/SS928_SDK/src/os08a20_dtof/sample_os08a20_dtof \
+       root@192.168.137.2:/opt/sample/mipi_rgb_dtof_demo/
+
+=======================================================
+OPTION B: Native build on board (OpenEuler)
+=======================================================
+
+Requires: gcc on the board ("dnf install gcc gcc-c++" if not present)
+
+On the board or via SCP, create /opt/build/os08a20_dtof/ with:
+  .
+  ├── Makefile.standalone (rename to Makefile)
+  ├── os08a20_dtof.c
+  ├── dtof_dumpraw.c        (from mipi_imx347/)
+  ├── pwm.c                 (from mipi_imx347/)
+  ├── scene_auto/           (from mipi_imx347/scene_auto/)
+  ├── dtof/                 (from mipi_imx347/dtof/)
+  └── sdk/
+      ├── include/          (from SS928_SDK/include/)
+      ├── lib/              (from SS928_SDK/lib/linux/hisilicon/)
+      └── common/           (from SS928_SDK/src/common/)
+
+Then on the board:
+  cd /opt/build/os08a20_dtof
+  make -f Makefile.standalone -j2
+
+=======================================================
+RUNTIME — how to use sample_os08a20_dtof
+=======================================================
+
+1. Board startup (same init as before):
+   /root/init_imx347_4lane.sh       # GPIO/mux setup
+   /root/init_dtof_cfg.sh            # dToF GPIO reset
+
+2. Load KO files (use the existing dToF-specific ones in /opt/ko/):
+   insmod /opt/ko/ot_isp.ko
+   insmod /opt/ko/ot_mipi_rx.ko
+   insmod /opt/ko/ot_vi.ko
+   # ... rest of the ko loading sequence
+
+3. Run the combined binary:
+   cd /opt/sample/mipi_rgb_dtof_demo
+   ./sample_os08a20_dtof 1 192.168.137.100
+
+4. On the VM side:
+   - Camera H264 stream: cat stream_chn0.h265 | ... (or use camera_tcp_server.py logic)
+   - dToF UDP: dtof_bridge on port 2368 (same as before)
+
+Note: The existing camera_tcp_server.py can be updated to start
+      sample_os08a20_dtof instead of sample_vio 0 1.

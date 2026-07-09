@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<Partition_Info>
+<Part Sel="1" PartitionName="boot" FlashType="emmc" FileSystem="none" Start="0" Length="1M" SelectFile=".\boot_image_4G.bin"/>
+<Part Sel="1" PartitionName="env" FlashType="emmc" FileSystem="none" Start="1M" Length="1M" SelectFile=".\boot_env_4G.bin"/>
+<Part Sel="1" PartitionName="kernel" FlashType="emmc" FileSystem="none" Start="2M" Length="16M" SelectFile=".\kernel"/>
+<Part Sel="1" PartitionName="rootfs" FlashType="emmc" FileSystem="ext3/4" Start="18M" Length="-" SelectFile=".\rootfs.ext4"/>
+</Partition_Info>

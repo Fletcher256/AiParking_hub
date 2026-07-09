@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Clean Wi-Fi STA startup for same-hotspot board control.
+# Keep the WS73 power toggle, then connect using /etc/wireless/wpa_supplicant.conf.
+
+set -u
+
+echo "=================wifi start=================="
+
+export PATH="/usr/bin:/usr/sbin:/bin:/sbin"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:/usr/lib:/opt/lib"
+
+mcu_tool /dev/i2c-0 0x10 nl off
+sleep 0.5
+mcu_tool /dev/i2c-0 0x10 nl on
+
+/opt/sample/ws73/wifi_sta.sh 0
+
+sleep 5
+
+echo "=================wifi end  =================="

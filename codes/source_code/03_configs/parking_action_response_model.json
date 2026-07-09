@@ -1,0 +1,3468 @@
+{
+  "schema": "parking_action_response_model.v2",
+  "version": "2026-06-13-c2-steering",
+  "noise_3sigma": {
+    "slot_x_err_px": 3.0,
+    "slot_heading_err_deg": 0.6,
+    "slot_lateral_cm": 0.2,
+    "min_margin_px": 2.0
+  },
+  "records": [
+    {
+      "action_id": "reverse_left_hard_3",
+      "command": "ARC D=-3.0 STE=60 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample1_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample1_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_3",
+          "command": "ARC D=-3.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.97,
+            "slot_x_err_px": 13.5,
+            "slot_entry_x_err_px": 11.71,
+            "slot_lateral_cm": 0.179,
+            "slot_heading_err_deg": -2.49,
+            "min_margin_px": 209.23,
+            "left_margin_px": 209.23,
+            "right_margin_px": 236.23,
+            "confidence": 0.678,
+            "pose_quality": 0.892
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.21,
+            "slot_x_err_px": 18.77,
+            "slot_entry_x_err_px": 17.48,
+            "slot_lateral_cm": -0.239,
+            "slot_heading_err_deg": -1.918,
+            "min_margin_px": 197.6,
+            "left_margin_px": 197.6,
+            "right_margin_px": 235.14,
+            "confidence": 0.752,
+            "pose_quality": 0.917
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.76,
+            "slot_x_err_px": 5.27,
+            "slot_entry_x_err_px": 5.77,
+            "slot_lateral_cm": -0.418,
+            "slot_heading_err_deg": 0.572,
+            "min_margin_px": -11.63,
+            "left_margin_px": -11.63,
+            "right_margin_px": -1.09
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 5.27,
+            "lat_abs_delta": 0.06,
+            "heading_abs_delta": -0.572,
+            "margin_delta": -11.63,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.0 Y=-1.0 D=1.0 YAW=0.6",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.6 X=-0.0 Y=-1.2 D=1.2 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample2_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample2_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_3",
+          "command": "ARC D=-3.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 37.061,
+            "slot_x_err_px": 13.46,
+            "slot_entry_x_err_px": 11.62,
+            "slot_lateral_cm": 0.18,
+            "slot_heading_err_deg": -2.478,
+            "min_margin_px": 209.31,
+            "left_margin_px": 209.31,
+            "right_margin_px": 236.23,
+            "confidence": 0.717,
+            "pose_quality": 0.904
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.21,
+            "slot_x_err_px": 18.77,
+            "slot_entry_x_err_px": 17.48,
+            "slot_lateral_cm": -0.239,
+            "slot_heading_err_deg": -1.918,
+            "min_margin_px": 197.6,
+            "left_margin_px": 197.6,
+            "right_margin_px": 235.14,
+            "confidence": 0.761,
+            "pose_quality": 0.92
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.851,
+            "slot_x_err_px": 5.31,
+            "slot_entry_x_err_px": 5.86,
+            "slot_lateral_cm": -0.419,
+            "slot_heading_err_deg": 0.56,
+            "min_margin_px": -11.71,
+            "left_margin_px": -11.71,
+            "right_margin_px": -1.09
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 5.31,
+            "lat_abs_delta": 0.059,
+            "heading_abs_delta": -0.56,
+            "margin_delta": -11.71,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.0 Y=-1.1 D=1.1 YAW=0.7",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.6 X=-0.0 Y=-1.3 D=1.3 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample3_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_3_20260622_s4t3_reverse_left_hard_3_auto_return_sample3_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_3",
+          "command": "ARC D=-3.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 37.061,
+            "slot_x_err_px": 13.46,
+            "slot_entry_x_err_px": 11.62,
+            "slot_lateral_cm": 0.18,
+            "slot_heading_err_deg": -2.478,
+            "min_margin_px": 209.31,
+            "left_margin_px": 209.31,
+            "right_margin_px": 236.23,
+            "confidence": 0.704,
+            "pose_quality": 0.9
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.21,
+            "slot_x_err_px": 18.77,
+            "slot_entry_x_err_px": 17.48,
+            "slot_lateral_cm": -0.239,
+            "slot_heading_err_deg": -1.918,
+            "min_margin_px": 197.6,
+            "left_margin_px": 197.6,
+            "right_margin_px": 235.14,
+            "confidence": 0.729,
+            "pose_quality": 0.91
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.851,
+            "slot_x_err_px": 5.31,
+            "slot_entry_x_err_px": 5.86,
+            "slot_lateral_cm": -0.419,
+            "slot_heading_err_deg": 0.56,
+            "min_margin_px": -11.71,
+            "left_margin_px": -11.71,
+            "right_margin_px": -1.09
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 5.31,
+            "lat_abs_delta": 0.059,
+            "heading_abs_delta": -0.56,
+            "margin_delta": -11.71,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.0 Y=-1.0 D=1.0 YAW=0.9",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.8 X=-0.0 Y=-1.2 D=1.2 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -0.821,
+        "slot_x_err_px": 5.297,
+        "slot_entry_x_err_px": 5.83,
+        "slot_lateral_cm": -0.419,
+        "slot_heading_err_deg": 0.564,
+        "min_margin_px": -11.683,
+        "left_margin_px": -11.683,
+        "right_margin_px": -1.09
+      },
+      "n": 3,
+      "confidence": 0.6,
+      "verdict_counts": {
+        "worsened": 3
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_left_hard_4",
+      "command": "ARC D=-4.0 STE=60 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample1_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample1_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_4",
+          "command": "ARC D=-4.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 37.061,
+            "slot_x_err_px": 13.46,
+            "slot_entry_x_err_px": 11.62,
+            "slot_lateral_cm": 0.18,
+            "slot_heading_err_deg": -2.478,
+            "min_margin_px": 209.31,
+            "left_margin_px": 209.31,
+            "right_margin_px": 236.23,
+            "confidence": 0.68,
+            "pose_quality": 0.893
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.008,
+            "slot_x_err_px": 23.81,
+            "slot_entry_x_err_px": 23.56,
+            "slot_lateral_cm": -0.362,
+            "slot_heading_err_deg": -0.288,
+            "min_margin_px": 194.5,
+            "left_margin_px": 194.5,
+            "right_margin_px": 242.12,
+            "confidence": 0.805,
+            "pose_quality": 0.94
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.053,
+            "slot_x_err_px": 10.35,
+            "slot_entry_x_err_px": 11.94,
+            "slot_lateral_cm": -0.542,
+            "slot_heading_err_deg": 2.19,
+            "min_margin_px": -14.81,
+            "left_margin_px": -14.81,
+            "right_margin_px": 5.89
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 10.35,
+            "lat_abs_delta": 0.182,
+            "heading_abs_delta": -2.19,
+            "margin_delta": -14.81,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.1 Y=-2.2 D=2.2 YAW=-0.3",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-1.1 X=-0.1 Y=-3.3 D=3.3 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample2_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample2_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_4",
+          "command": "ARC D=-4.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.68,
+            "slot_x_err_px": 16.25,
+            "slot_entry_x_err_px": 14.61,
+            "slot_lateral_cm": -0.03,
+            "slot_heading_err_deg": -2.203,
+            "min_margin_px": 201.68,
+            "left_margin_px": 201.68,
+            "right_margin_px": 234.17,
+            "confidence": 0.678,
+            "pose_quality": 0.894
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.642,
+            "slot_x_err_px": 25.125,
+            "slot_entry_x_err_px": 25.28,
+            "slot_lateral_cm": -0.364,
+            "slot_heading_err_deg": 0.432,
+            "min_margin_px": 191.415,
+            "left_margin_px": 191.415,
+            "right_margin_px": 241.67,
+            "confidence": 0.798,
+            "pose_quality": 0.937
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.038,
+            "slot_x_err_px": 8.875,
+            "slot_entry_x_err_px": 10.67,
+            "slot_lateral_cm": -0.334,
+            "slot_heading_err_deg": 2.635,
+            "min_margin_px": -10.265,
+            "left_margin_px": -10.265,
+            "right_margin_px": 7.5
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 8.875,
+            "lat_abs_delta": 0.334,
+            "heading_abs_delta": -1.771,
+            "margin_delta": -10.265,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.1 Y=-2.0 D=2.0 YAW=-0.5",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-1.5 X=-0.1 Y=-3.3 D=3.3 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample3_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_4_20260622_s4t3_reverse_left_hard_4_auto_return_sample3_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_4",
+          "command": "ARC D=-4.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.492,
+            "slot_x_err_px": 15.49,
+            "slot_entry_x_err_px": 14.34,
+            "slot_lateral_cm": 0.023,
+            "slot_heading_err_deg": -1.637,
+            "min_margin_px": 201.31,
+            "left_margin_px": 201.31,
+            "right_margin_px": 232.29,
+            "confidence": 0.71,
+            "pose_quality": 0.906
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.542,
+            "slot_x_err_px": 29.91,
+            "slot_entry_x_err_px": 29.81,
+            "slot_lateral_cm": -0.705,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 189.5,
+            "left_margin_px": 189.5,
+            "right_margin_px": 249.33,
+            "confidence": 0.815,
+            "pose_quality": 0.945
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.95,
+            "slot_x_err_px": 14.42,
+            "slot_entry_x_err_px": 15.47,
+            "slot_lateral_cm": -0.728,
+            "slot_heading_err_deg": 1.637,
+            "min_margin_px": -11.81,
+            "left_margin_px": -11.81,
+            "right_margin_px": 17.04
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 14.42,
+            "lat_abs_delta": 0.682,
+            "heading_abs_delta": -1.637,
+            "margin_delta": -11.81,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.1 Y=-2.1 D=2.1 YAW=-0.9",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-2.1 X=-0.2 Y=-3.5 D=3.6 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -1.014,
+        "slot_x_err_px": 11.215,
+        "slot_entry_x_err_px": 12.693,
+        "slot_lateral_cm": -0.535,
+        "slot_heading_err_deg": 2.154,
+        "min_margin_px": -12.295,
+        "left_margin_px": -12.295,
+        "right_margin_px": 10.143
+      },
+      "n": 3,
+      "confidence": 0.6,
+      "verdict_counts": {
+        "worsened": 3
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_left_hard_6",
+      "command": "ARC D=-6.0 STE=60 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_6_20260622_s4t3_reverse_left_hard_6_auto_return_sample3_x40_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_hard_6_20260622_s4t3_reverse_left_hard_6_auto_return_sample3_x40_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_hard_6",
+          "command": "ARC D=-6.0 STE=60 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.111,
+            "slot_x_err_px": 20.538,
+            "slot_entry_x_err_px": 19.424,
+            "slot_lateral_cm": -0.312,
+            "slot_heading_err_deg": -1.597,
+            "min_margin_px": 194.326,
+            "left_margin_px": 194.326,
+            "right_margin_px": 235.4,
+            "confidence": 0.749,
+            "pose_quality": 0.917
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 33.993,
+            "slot_x_err_px": 54.296,
+            "slot_entry_x_err_px": 54.647,
+            "slot_lateral_cm": -2.099,
+            "slot_heading_err_deg": 0.951,
+            "min_margin_px": 176.237,
+            "left_margin_px": 176.237,
+            "right_margin_px": 284.829,
+            "confidence": 0.835,
+            "pose_quality": 0.946
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.118,
+            "slot_x_err_px": 33.758,
+            "slot_entry_x_err_px": 35.223,
+            "slot_lateral_cm": -1.787,
+            "slot_heading_err_deg": 2.548,
+            "min_margin_px": -18.089,
+            "left_margin_px": -18.089,
+            "right_margin_px": 49.429
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 33.758,
+            "lat_abs_delta": 1.787,
+            "heading_abs_delta": -0.646,
+            "margin_delta": -18.089,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.3 Y=-4.3 D=4.3 YAW=-4.2",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-5.7 X=-0.6 Y=-6.9 D=7.0 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -2.118,
+        "slot_x_err_px": 33.758,
+        "slot_entry_x_err_px": 35.223,
+        "slot_lateral_cm": -1.787,
+        "slot_heading_err_deg": 2.548,
+        "min_margin_px": -18.089,
+        "left_margin_px": -18.089,
+        "right_margin_px": 49.429
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_left_hard_6",
+      "command": "ARC D=-6.0 STE=60 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "-",
+        "x_err_bin": "40-120",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "artifacts/autopark_baseline/parking_arc_calib_ste60_combined_20260613.jsonl:3",
+          "date": "2026-06-13",
+          "log": "artifacts/autopark_baseline/parking_arc_calib_ste60_combined_20260613.jsonl",
+          "motion_lineno": 3,
+          "action_id": "reverse_left_hard_6",
+          "command": "ARC D=-6.0 STE=60 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "-",
+            "x_err_bin": "40-120",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 1,
+            "linenos": [
+              2
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 1,
+            "slot_y_dist_cm": 32.451,
+            "slot_x_err_px": -51.9,
+            "slot_entry_x_err_px": -51.21,
+            "slot_lateral_cm": 4.401,
+            "slot_heading_err_deg": 0.979,
+            "min_margin_px": 210.51,
+            "left_margin_px": 314.31,
+            "right_margin_px": 210.51,
+            "confidence": 0.94,
+            "pose_quality": 0.977
+          },
+          "post": {
+            "count": 3,
+            "linenos": [
+              6,
+              7,
+              8
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 3,
+            "slot_y_dist_cm": 28.006,
+            "slot_x_err_px": -10.0,
+            "slot_entry_x_err_px": -10.0,
+            "slot_lateral_cm": 1.737,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 210.0,
+            "left_margin_px": 230.0,
+            "right_margin_px": 210.0,
+            "confidence": 0.895,
+            "pose_quality": 0.968
+          },
+          "delta": {
+            "slot_y_dist_cm": -4.445,
+            "slot_x_err_px": 41.9,
+            "slot_entry_x_err_px": 41.21,
+            "slot_lateral_cm": -2.664,
+            "slot_heading_err_deg": -0.979,
+            "min_margin_px": -0.51,
+            "left_margin_px": -84.31,
+            "right_margin_px": -0.51
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -41.9,
+            "lat_abs_delta": -2.664,
+            "heading_abs_delta": -0.979,
+            "margin_delta": -0.51,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "",
+            "pwm_after_pre_servo": "",
+            "motion_response": "ACK 1005 ARC\r\nTLM 21 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 22 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 23 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 24 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 25 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 26 YAW=-14.8 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=60.0 IMU=OK\r\nTLM 27 YAW=-15.0 X=-0.0 Y=-0.1 D=0.1 V=-1.5 ANG=60.0 IMU=OK\r\nTLM 28 YAW=-15.0 X=-0.0 Y=-0.2 D=0.2 V=0.0 ANG=60.0 IMU=OK\r\nTLM 29 YAW=-15.1 X=-0.0 Y=-0.2 D=0.2 V=-0.4 ANG=60.0 IMU=OK\r\nTLM 30 YAW=-16.0 X=-0.0 Y=-1.2 D=1.2 V=-8.9 ANG=60.0 IMU=OK\r\nTLM 31 YAW=-17.9 X=-0.2 Y=-3.9 D=3.9 V=-15.2 ANG=60.0 IMU=OK\r\nDONE 1005 ARC X=-0.3 Y=-4.2 D=4.2 YAW=-18.0",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=90.0 YAW=-19.4 X=-0.5 Y=-6.5 D=6.5 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -4.445,
+        "slot_x_err_px": 41.9,
+        "slot_entry_x_err_px": 41.21,
+        "slot_lateral_cm": -2.664,
+        "slot_heading_err_deg": -0.979,
+        "min_margin_px": -0.51,
+        "left_margin_px": -84.31,
+        "right_margin_px": -0.51
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "improved": 1
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_left_hard_6",
+      "command": "ARC D=-6.0 STE=60 V=1",
+      "bucket": {
+        "phase": "approach_entry",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "artifacts/autopark_baseline/parking_probe_left_20260612.jsonl:4",
+          "date": "2026-06-12",
+          "log": "artifacts/autopark_baseline/parking_probe_left_20260612.jsonl",
+          "motion_lineno": 4,
+          "action_id": "reverse_left_hard_6",
+          "command": "ARC D=-6.0 STE=60 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 1,
+            "linenos": [
+              3
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 1,
+            "slot_y_dist_cm": 34.108,
+            "slot_x_err_px": 18.0,
+            "slot_entry_x_err_px": 18.0,
+            "slot_lateral_cm": 0.029,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 186.0,
+            "left_margin_px": 186.0,
+            "right_margin_px": 222.0,
+            "confidence": 0.823,
+            "pose_quality": 0.947
+          },
+          "post": {
+            "count": 1,
+            "linenos": [
+              7
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 1,
+            "slot_y_dist_cm": 31.515,
+            "slot_x_err_px": 46.0,
+            "slot_entry_x_err_px": 46.0,
+            "slot_lateral_cm": -1.684,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 162.0,
+            "left_margin_px": 162.0,
+            "right_margin_px": 254.0,
+            "confidence": 0.726,
+            "pose_quality": 0.918
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.593,
+            "slot_x_err_px": 28.0,
+            "slot_entry_x_err_px": 28.0,
+            "slot_lateral_cm": -1.713,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": -24.0,
+            "left_margin_px": -24.0,
+            "right_margin_px": 32.0
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 28.0,
+            "lat_abs_delta": 1.655,
+            "heading_abs_delta": 0.0,
+            "margin_delta": -24.0,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=60.0 PULSE=1333 PSC=71 ARR=19999 CCR2=1333 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=90.0 YAW=31.3 X=-0.1 Y=-4.5 D=4.5 VEL=0.0 DROP=0"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -2.593,
+        "slot_x_err_px": 28.0,
+        "slot_entry_x_err_px": 28.0,
+        "slot_lateral_cm": -1.713,
+        "slot_heading_err_deg": 0.0,
+        "min_margin_px": -24.0,
+        "left_margin_px": -24.0,
+        "right_margin_px": 32.0
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_left_soft_6",
+      "command": "ARC D=-6.0 STE=75 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_soft_6_20260622_s4t3_reverse_left_soft_6_auto_return_sample2_x40_h3p5_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_soft_6_20260622_s4t3_reverse_left_soft_6_auto_return_sample2_x40_h3p5_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_left_soft_6",
+          "command": "ARC D=-6.0 STE=75 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 38.729,
+            "slot_x_err_px": 35.02,
+            "slot_entry_x_err_px": 34.87,
+            "slot_lateral_cm": -0.949,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 177.5,
+            "left_margin_px": 177.5,
+            "right_margin_px": 247.55,
+            "confidence": 0.65,
+            "pose_quality": 0.895
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.345,
+            "slot_x_err_px": 56.43,
+            "slot_entry_x_err_px": 56.93,
+            "slot_lateral_cm": -2.204,
+            "slot_heading_err_deg": 1.169,
+            "min_margin_px": 160.91,
+            "left_margin_px": 160.91,
+            "right_margin_px": 273.77,
+            "confidence": 0.795,
+            "pose_quality": 0.933
+          },
+          "delta": {
+            "slot_y_dist_cm": -3.384,
+            "slot_x_err_px": 21.41,
+            "slot_entry_x_err_px": 22.06,
+            "slot_lateral_cm": -1.255,
+            "slot_heading_err_deg": 1.169,
+            "min_margin_px": -16.59,
+            "left_margin_px": -16.59,
+            "right_margin_px": 26.22
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 21.41,
+            "lat_abs_delta": 1.255,
+            "heading_abs_delta": 1.169,
+            "margin_delta": -16.59,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": true,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=75.0 PULSE=1416 PSC=71 ARR=19999 CCR2=1416 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.2 Y=-4.2 D=4.2 YAW=-5.8",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-6.2 X=-0.3 Y=-6.2 D=6.2 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_soft_6_20260622_s4t3_reverse_left_soft_6_auto_return_sample3_pairreturn_sessionbase_combined.jsonl:33",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_left_soft_6_20260622_s4t3_reverse_left_soft_6_auto_return_sample3_pairreturn_sessionbase_combined.jsonl",
+          "motion_lineno": 33,
+          "action_id": "reverse_left_soft_6",
+          "command": "ARC D=-6.0 STE=75 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              11,
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              32
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 37.101,
+            "slot_x_err_px": 29.32,
+            "slot_entry_x_err_px": 30.3,
+            "slot_lateral_cm": -0.294,
+            "slot_heading_err_deg": 1.918,
+            "min_margin_px": 187.09,
+            "left_margin_px": 187.09,
+            "right_margin_px": 245.72,
+            "confidence": 0.621,
+            "pose_quality": 0.878
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              37,
+              43,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.455,
+            "slot_x_err_px": 57.29,
+            "slot_entry_x_err_px": 53.13,
+            "slot_lateral_cm": -3.064,
+            "slot_heading_err_deg": -6.026,
+            "min_margin_px": 161.42,
+            "left_margin_px": 161.42,
+            "right_margin_px": 276.0,
+            "confidence": 0.822,
+            "pose_quality": 0.92
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.646,
+            "slot_x_err_px": 27.97,
+            "slot_entry_x_err_px": 22.83,
+            "slot_lateral_cm": -2.77,
+            "slot_heading_err_deg": -7.944,
+            "min_margin_px": -25.67,
+            "left_margin_px": -25.67,
+            "right_margin_px": 30.28
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 27.97,
+            "lat_abs_delta": 2.77,
+            "heading_abs_delta": 4.108,
+            "margin_delta": -25.67,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": true,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=75.0 PULSE=1416 PSC=71 ARR=19999 CCR2=1416 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.1 Y=-4.2 D=4.2 YAW=-6.3",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-6.8 X=-0.2 Y=-6.1 D=6.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -3.015,
+        "slot_x_err_px": 24.69,
+        "slot_entry_x_err_px": 22.445,
+        "slot_lateral_cm": -2.013,
+        "slot_heading_err_deg": -3.388,
+        "min_margin_px": -21.13,
+        "left_margin_px": -21.13,
+        "right_margin_px": 28.25
+      },
+      "n": 2,
+      "confidence": 0.5,
+      "verdict_counts": {
+        "worsened": 2
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_left_soft_6",
+      "command": "ARC D=-6.0 STE=75 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "-",
+        "x_err_bin": "0-40",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "artifacts/autopark_baseline/parking_arc_calib_ste75_combined_20260613.jsonl:3",
+          "date": "2026-06-13",
+          "log": "artifacts/autopark_baseline/parking_arc_calib_ste75_combined_20260613.jsonl",
+          "motion_lineno": 3,
+          "action_id": "reverse_left_soft_6",
+          "command": "ARC D=-6.0 STE=75 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "-",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 1,
+            "linenos": [
+              2
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 1,
+            "slot_y_dist_cm": 34.886,
+            "slot_x_err_px": -30.52,
+            "slot_entry_x_err_px": -29.14,
+            "slot_lateral_cm": 3.218,
+            "slot_heading_err_deg": 1.975,
+            "min_margin_px": 237.31,
+            "left_margin_px": 298.34,
+            "right_margin_px": 237.31,
+            "confidence": 0.898,
+            "pose_quality": 0.961
+          },
+          "post": {
+            "count": 3,
+            "linenos": [
+              6,
+              7,
+              8
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 3,
+            "slot_y_dist_cm": 32.541,
+            "slot_x_err_px": -50.22,
+            "slot_entry_x_err_px": -49.203,
+            "slot_lateral_cm": 4.356,
+            "slot_heading_err_deg": 1.461,
+            "min_margin_px": 210.937,
+            "left_margin_px": 311.38,
+            "right_margin_px": 210.937,
+            "confidence": 0.941,
+            "pose_quality": 0.976
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.345,
+            "slot_x_err_px": -19.7,
+            "slot_entry_x_err_px": -20.063,
+            "slot_lateral_cm": 1.138,
+            "slot_heading_err_deg": -0.514,
+            "min_margin_px": -26.373,
+            "left_margin_px": 13.04,
+            "right_margin_px": -26.373
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 19.7,
+            "lat_abs_delta": 1.138,
+            "heading_abs_delta": -0.514,
+            "margin_delta": -26.373,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "",
+            "pwm_after_pre_servo": "",
+            "motion_response": "ACK 1005 ARC\r\nTLM 10 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 11 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 12 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 13 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 14 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 15 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 16 YAW=-10.0 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=75.0 IMU=OK\r\nTLM 17 YAW=-10.1 X=-0.0 Y=-0.1 D=0.1 V=-1.3 ANG=75.0 IMU=OK\r\nTLM 18 YAW=-10.1 X=-0.0 Y=-0.1 D=0.2 V=0.0 ANG=75.0 IMU=OK\r\nTLM 19 YAW=-10.2 X=0.0 Y=-0.6 D=0.6 V=-4.4 ANG=75.0 IMU=OK\r\nTLM 20 YAW=-10.8 X=-0.0 Y=-2.3 D=2.3 V=-12.2 ANG=75.0 IMU=OK\r\nDONE 1005 ARC X=-0.1 Y=-4.2 D=4.2 YAW=-11.5",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=90.0 YAW=-12.2 X=-0.1 Y=-5.9 D=5.9 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -2.345,
+        "slot_x_err_px": -19.7,
+        "slot_entry_x_err_px": -20.063,
+        "slot_lateral_cm": 1.138,
+        "slot_heading_err_deg": -0.514,
+        "min_margin_px": -26.373,
+        "left_margin_px": 13.04,
+        "right_margin_px": -26.373
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_right_hard_3",
+      "command": "ARC D=-3.0 STE=120 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample1_x40_retry2_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample1_x40_retry2_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_3",
+          "command": "ARC D=-3.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.262,
+            "slot_x_err_px": 6.34,
+            "slot_entry_x_err_px": 4.6,
+            "slot_lateral_cm": 0.431,
+            "slot_heading_err_deg": -2.739,
+            "min_margin_px": 224.41,
+            "left_margin_px": 224.41,
+            "right_margin_px": 237.09,
+            "confidence": 0.722,
+            "pose_quality": 0.904
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.837,
+            "slot_x_err_px": -8.01,
+            "slot_entry_x_err_px": -9.075,
+            "slot_lateral_cm": 1.414,
+            "slot_heading_err_deg": -1.825,
+            "min_margin_px": 212.855,
+            "left_margin_px": 228.88,
+            "right_margin_px": 212.855,
+            "confidence": 0.769,
+            "pose_quality": 0.923
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.425,
+            "slot_x_err_px": -14.35,
+            "slot_entry_x_err_px": -13.675,
+            "slot_lateral_cm": 0.983,
+            "slot_heading_err_deg": 0.914,
+            "min_margin_px": -11.555,
+            "left_margin_px": 4.47,
+            "right_margin_px": -24.235
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 1.67,
+            "lat_abs_delta": 0.983,
+            "heading_abs_delta": -0.914,
+            "margin_delta": -11.555,
+            "x_improved": false,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-1.1 D=1.1 YAW=4.3",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=4.3 X=0.0 Y=-1.3 D=1.4 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample2_x40_combined.jsonl:33",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample2_x40_combined.jsonl",
+          "motion_lineno": 33,
+          "action_id": "reverse_right_hard_3",
+          "command": "ARC D=-3.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              11,
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              32
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.256,
+            "slot_x_err_px": 6.53,
+            "slot_entry_x_err_px": 4.98,
+            "slot_lateral_cm": 0.452,
+            "slot_heading_err_deg": -2.466,
+            "min_margin_px": 228.04,
+            "left_margin_px": 228.04,
+            "right_margin_px": 241.09,
+            "confidence": 0.763,
+            "pose_quality": 0.918
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              37,
+              43,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.914,
+            "slot_x_err_px": -4.97,
+            "slot_entry_x_err_px": -5.98,
+            "slot_lateral_cm": 1.243,
+            "slot_heading_err_deg": -1.676,
+            "min_margin_px": 215.04,
+            "left_margin_px": 224.97,
+            "right_margin_px": 215.04,
+            "confidence": 0.747,
+            "pose_quality": 0.917
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.342,
+            "slot_x_err_px": -11.5,
+            "slot_entry_x_err_px": -10.96,
+            "slot_lateral_cm": 0.791,
+            "slot_heading_err_deg": 0.79,
+            "min_margin_px": -13.0,
+            "left_margin_px": -3.07,
+            "right_margin_px": -26.05
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": -1.56,
+            "lat_abs_delta": 0.791,
+            "heading_abs_delta": -0.79,
+            "margin_delta": -13.0,
+            "x_improved": false,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-1.1 D=1.1 YAW=3.7",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=3.8 X=0.0 Y=-1.4 D=1.4 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample3_x40_combined.jsonl:33",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_3_20260622_s4t3_reverse_right_hard_3_auto_return_sample3_x40_combined.jsonl",
+          "motion_lineno": 33,
+          "action_id": "reverse_right_hard_3",
+          "command": "ARC D=-3.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              11,
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              32
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.422,
+            "slot_x_err_px": 9.39,
+            "slot_entry_x_err_px": 8.1,
+            "slot_lateral_cm": 0.367,
+            "slot_heading_err_deg": -1.918,
+            "min_margin_px": 212.87,
+            "left_margin_px": 212.87,
+            "right_margin_px": 231.64,
+            "confidence": 0.623,
+            "pose_quality": 0.879
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              37,
+              43,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.181,
+            "slot_x_err_px": 0.73,
+            "slot_entry_x_err_px": -0.6,
+            "slot_lateral_cm": 0.837,
+            "slot_heading_err_deg": -2.203,
+            "min_margin_px": 221.06,
+            "left_margin_px": 221.06,
+            "right_margin_px": 222.53,
+            "confidence": 0.746,
+            "pose_quality": 0.914
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.241,
+            "slot_x_err_px": -8.66,
+            "slot_entry_x_err_px": -8.7,
+            "slot_lateral_cm": 0.47,
+            "slot_heading_err_deg": -0.285,
+            "min_margin_px": 8.19,
+            "left_margin_px": 8.19,
+            "right_margin_px": -9.11
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": -8.66,
+            "lat_abs_delta": 0.47,
+            "heading_abs_delta": 0.285,
+            "margin_delta": 8.19,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-1.0 D=1.0 YAW=3.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=3.2 X=0.0 Y=-1.3 D=1.3 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -0.336,
+        "slot_x_err_px": -11.503,
+        "slot_entry_x_err_px": -11.112,
+        "slot_lateral_cm": 0.748,
+        "slot_heading_err_deg": 0.473,
+        "min_margin_px": -5.455,
+        "left_margin_px": 3.197,
+        "right_margin_px": -19.798
+      },
+      "n": 3,
+      "confidence": 0.6,
+      "verdict_counts": {
+        "worsened": 3
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_right_hard_4",
+      "command": "ARC D=-4.0 STE=120 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "-",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_sample1_x20h2_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_sample1_x20h2_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_4",
+          "command": "ARC D=-4.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "-",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.103,
+            "slot_x_err_px": -5.14,
+            "slot_entry_x_err_px": -6.34,
+            "slot_lateral_cm": 1.223,
+            "slot_heading_err_deg": -1.937,
+            "min_margin_px": 214.78,
+            "left_margin_px": 225.06,
+            "right_margin_px": 214.78,
+            "confidence": 0.779,
+            "pose_quality": 0.925
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.433,
+            "slot_x_err_px": -24.73,
+            "slot_entry_x_err_px": -25.6,
+            "slot_lateral_cm": 2.446,
+            "slot_heading_err_deg": -1.762,
+            "min_margin_px": 196.57,
+            "left_margin_px": 246.04,
+            "right_margin_px": 196.57,
+            "confidence": 0.803,
+            "pose_quality": 0.933
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.67,
+            "slot_x_err_px": -19.59,
+            "slot_entry_x_err_px": -19.26,
+            "slot_lateral_cm": 1.223,
+            "slot_heading_err_deg": 0.175,
+            "min_margin_px": -18.21,
+            "left_margin_px": 20.98,
+            "right_margin_px": -18.21
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 19.59,
+            "lat_abs_delta": 1.223,
+            "heading_abs_delta": -0.175,
+            "margin_delta": -18.21,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-2.1 D=2.1 YAW=5.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=5.5 X=0.2 Y=-3.2 D=3.2 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -0.67,
+        "slot_x_err_px": -19.59,
+        "slot_entry_x_err_px": -19.26,
+        "slot_lateral_cm": 1.223,
+        "slot_heading_err_deg": 0.175,
+        "min_margin_px": -18.21,
+        "left_margin_px": 20.98,
+        "right_margin_px": -18.21
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_right_hard_4",
+      "command": "ARC D=-4.0 STE=120 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_auto_return_sample2_x40_h3p5_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_auto_return_sample2_x40_h3p5_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_4",
+          "command": "ARC D=-4.0 STE=120 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.562,
+            "slot_x_err_px": 24.175,
+            "slot_entry_x_err_px": 24.32,
+            "slot_lateral_cm": -0.36,
+            "slot_heading_err_deg": 0.188,
+            "min_margin_px": 188.41,
+            "left_margin_px": 188.41,
+            "right_margin_px": 236.77,
+            "confidence": 0.779,
+            "pose_quality": 0.933
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.388,
+            "slot_x_err_px": 15.86,
+            "slot_entry_x_err_px": 15.6,
+            "slot_lateral_cm": 0.124,
+            "slot_heading_err_deg": -0.294,
+            "min_margin_px": 204.39,
+            "left_margin_px": 204.39,
+            "right_margin_px": 236.1,
+            "confidence": 0.826,
+            "pose_quality": 0.947
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.174,
+            "slot_x_err_px": -8.315,
+            "slot_entry_x_err_px": -8.72,
+            "slot_lateral_cm": 0.484,
+            "slot_heading_err_deg": -0.482,
+            "min_margin_px": 15.98,
+            "left_margin_px": 15.98,
+            "right_margin_px": -0.67
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -8.315,
+            "lat_abs_delta": -0.236,
+            "heading_abs_delta": 0.106,
+            "margin_delta": 15.98,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-2.1 D=2.1 YAW=-0.4",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.1 X=0.1 Y=-3.1 D=3.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_auto_return_sample3_x40_h3p5_combined.jsonl:33",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_4_20260622_s4t3_reverse_right_hard_4_auto_return_sample3_x40_h3p5_combined.jsonl",
+          "motion_lineno": 33,
+          "action_id": "reverse_right_hard_4",
+          "command": "ARC D=-4.0 STE=120 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              11,
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              32
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.733,
+            "slot_x_err_px": 27.43,
+            "slot_entry_x_err_px": 27.28,
+            "slot_lateral_cm": -0.46,
+            "slot_heading_err_deg": 0.0,
+            "min_margin_px": 188.32,
+            "left_margin_px": 188.32,
+            "right_margin_px": 243.18,
+            "confidence": 0.758,
+            "pose_quality": 0.927
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              37,
+              43,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.837,
+            "slot_x_err_px": 18.313,
+            "slot_entry_x_err_px": 18.006,
+            "slot_lateral_cm": -0.035,
+            "slot_heading_err_deg": -0.363,
+            "min_margin_px": 196.78,
+            "left_margin_px": 196.78,
+            "right_margin_px": 233.399,
+            "confidence": 0.826,
+            "pose_quality": 0.946
+          },
+          "delta": {
+            "slot_y_dist_cm": -0.896,
+            "slot_x_err_px": -9.117,
+            "slot_entry_x_err_px": -9.274,
+            "slot_lateral_cm": 0.425,
+            "slot_heading_err_deg": -0.363,
+            "min_margin_px": 8.46,
+            "left_margin_px": 8.46,
+            "right_margin_px": -9.781
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -9.117,
+            "lat_abs_delta": -0.425,
+            "heading_abs_delta": 0.363,
+            "margin_delta": 8.46,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-2.1 D=2.1 YAW=-0.8",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-0.3 X=0.2 Y=-3.1 D=3.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -0.535,
+        "slot_x_err_px": -8.716,
+        "slot_entry_x_err_px": -8.997,
+        "slot_lateral_cm": 0.455,
+        "slot_heading_err_deg": -0.422,
+        "min_margin_px": 12.22,
+        "left_margin_px": 12.22,
+        "right_margin_px": -5.226
+      },
+      "n": 2,
+      "confidence": 0.5,
+      "verdict_counts": {
+        "improved": 2
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_right_hard_6",
+      "command": "ARC D=-6.0 STE=120 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_auto_return_sample3_x40_h2p5_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_auto_return_sample3_x40_h2p5_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_6",
+          "command": "ARC D=-6.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.827,
+            "slot_x_err_px": 23.762,
+            "slot_entry_x_err_px": 23.302,
+            "slot_lateral_cm": -0.394,
+            "slot_heading_err_deg": -0.587,
+            "min_margin_px": 192.78,
+            "left_margin_px": 192.78,
+            "right_margin_px": 240.303,
+            "confidence": 0.802,
+            "pose_quality": 0.938
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.164,
+            "slot_x_err_px": -2.35,
+            "slot_entry_x_err_px": -2.73,
+            "slot_lateral_cm": 1.179,
+            "slot_heading_err_deg": -0.924,
+            "min_margin_px": 241.6,
+            "left_margin_px": 246.31,
+            "right_margin_px": 241.6,
+            "confidence": 0.883,
+            "pose_quality": 0.961
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.663,
+            "slot_x_err_px": -26.112,
+            "slot_entry_x_err_px": -26.032,
+            "slot_lateral_cm": 1.573,
+            "slot_heading_err_deg": -0.337,
+            "min_margin_px": 48.82,
+            "left_margin_px": 53.53,
+            "right_margin_px": 1.297
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": -21.412,
+            "lat_abs_delta": 0.785,
+            "heading_abs_delta": 0.337,
+            "margin_delta": 48.82,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.2 Y=-4.0 D=4.0 YAW=2.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=2.7 X=0.3 Y=-5.3 D=5.3 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_sample1_newbaseline_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_sample1_newbaseline_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_6",
+          "command": "ARC D=-6.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.069,
+            "slot_x_err_px": 10.14,
+            "slot_entry_x_err_px": 8.19,
+            "slot_lateral_cm": 0.164,
+            "slot_heading_err_deg": -3.042,
+            "min_margin_px": 220.69,
+            "left_margin_px": 220.69,
+            "right_margin_px": 240.97,
+            "confidence": 0.761,
+            "pose_quality": 0.915
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.785,
+            "slot_x_err_px": -26.277,
+            "slot_entry_x_err_px": -27.056,
+            "slot_lateral_cm": 2.557,
+            "slot_heading_err_deg": -1.791,
+            "min_margin_px": 208.457,
+            "left_margin_px": 261.01,
+            "right_margin_px": 208.457,
+            "confidence": 0.846,
+            "pose_quality": 0.946
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.284,
+            "slot_x_err_px": -36.417,
+            "slot_entry_x_err_px": -35.246,
+            "slot_lateral_cm": 2.393,
+            "slot_heading_err_deg": 1.251,
+            "min_margin_px": -12.233,
+            "left_margin_px": 40.32,
+            "right_margin_px": -32.513
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 16.137,
+            "lat_abs_delta": 2.393,
+            "heading_abs_delta": -1.251,
+            "margin_delta": -12.233,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.2 Y=-4.1 D=4.1 YAW=6.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=6.5 X=0.3 Y=-5.0 D=5.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_sample2_newbaseline_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_hard_6_20260622_s4t3_reverse_right_hard_6_sample2_newbaseline_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_right_hard_6",
+          "command": "ARC D=-6.0 STE=120 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.247,
+            "slot_x_err_px": 10.34,
+            "slot_entry_x_err_px": 8.6,
+            "slot_lateral_cm": 0.187,
+            "slot_heading_err_deg": -2.739,
+            "min_margin_px": 220.41,
+            "left_margin_px": 220.41,
+            "right_margin_px": 241.09,
+            "confidence": 0.752,
+            "pose_quality": 0.914
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.755,
+            "slot_x_err_px": -28.51,
+            "slot_entry_x_err_px": -29.11,
+            "slot_lateral_cm": 2.708,
+            "slot_heading_err_deg": -1.528,
+            "min_margin_px": 207.535,
+            "left_margin_px": 264.56,
+            "right_margin_px": 207.535,
+            "confidence": 0.851,
+            "pose_quality": 0.948
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.492,
+            "slot_x_err_px": -38.85,
+            "slot_entry_x_err_px": -37.71,
+            "slot_lateral_cm": 2.521,
+            "slot_heading_err_deg": 1.211,
+            "min_margin_px": -12.875,
+            "left_margin_px": 44.15,
+            "right_margin_px": -33.555
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 18.17,
+            "lat_abs_delta": 2.521,
+            "heading_abs_delta": -1.211,
+            "margin_delta": -12.875,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=120.0 PULSE=1666 PSC=71 ARR=19999 CCR2=1666 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.2 Y=-4.1 D=4.1 YAW=5.6",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=6.0 X=0.3 Y=-4.9 D=5.0 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -1.48,
+        "slot_x_err_px": -33.793,
+        "slot_entry_x_err_px": -32.996,
+        "slot_lateral_cm": 2.162,
+        "slot_heading_err_deg": 0.708,
+        "min_margin_px": 7.904,
+        "left_margin_px": 46.0,
+        "right_margin_px": -21.59
+      },
+      "n": 3,
+      "confidence": 0.6,
+      "verdict_counts": {
+        "worsened": 3
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_right_soft_6",
+      "command": "ARC D=-6.0 STE=105 V=1",
+      "bucket": {
+        "phase": "approach_entry",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_soft_6_20260622_s4t3_reverse_right_soft_6_auto_return_sample2_sessionbase_return30_combined.jsonl:105",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_soft_6_20260622_s4t3_reverse_right_soft_6_auto_return_sample2_sessionbase_return30_combined.jsonl",
+          "motion_lineno": 105,
+          "action_id": "reverse_right_soft_6",
+          "command": "ARC D=-6.0 STE=105 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              83,
+              85,
+              87,
+              89,
+              91,
+              93,
+              95,
+              97,
+              99,
+              104
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 40.686,
+            "slot_x_err_px": 79.055,
+            "slot_entry_x_err_px": 74.243,
+            "slot_lateral_cm": -4.5,
+            "slot_heading_err_deg": -6.916,
+            "min_margin_px": 127.021,
+            "left_margin_px": 127.021,
+            "right_margin_px": 285.137,
+            "confidence": 0.71,
+            "pose_quality": 0.882
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              109,
+              115,
+              117,
+              119,
+              121,
+              123,
+              125,
+              127,
+              129,
+              131
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.418,
+            "slot_x_err_px": 60.12,
+            "slot_entry_x_err_px": 56.321,
+            "slot_lateral_cm": -3.188,
+            "slot_heading_err_deg": -5.421,
+            "min_margin_px": 167.165,
+            "left_margin_px": 167.165,
+            "right_margin_px": 287.398,
+            "confidence": 0.732,
+            "pose_quality": 0.895
+          },
+          "delta": {
+            "slot_y_dist_cm": -5.268,
+            "slot_x_err_px": -18.935,
+            "slot_entry_x_err_px": -17.922,
+            "slot_lateral_cm": 1.312,
+            "slot_heading_err_deg": 1.495,
+            "min_margin_px": 40.144,
+            "left_margin_px": 40.144,
+            "right_margin_px": 2.261
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -18.935,
+            "lat_abs_delta": -1.312,
+            "heading_abs_delta": -1.495,
+            "margin_delta": 40.144,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=105.0 PULSE=1583 PSC=71 ARR=19999 CCR2=1583 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-4.2 D=4.2 YAW=-7.8",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-7.5 X=0.1 Y=-5.4 D=5.4 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -5.268,
+        "slot_x_err_px": -18.935,
+        "slot_entry_x_err_px": -17.922,
+        "slot_lateral_cm": 1.312,
+        "slot_heading_err_deg": 1.495,
+        "min_margin_px": 40.144,
+        "left_margin_px": 40.144,
+        "right_margin_px": 2.261
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "improved": 1
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_right_soft_6",
+      "command": "ARC D=-6.0 STE=105 V=1",
+      "bucket": {
+        "phase": "straighten_or_enter",
+        "x_err_sign": "+",
+        "x_err_bin": "0-40",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "artifacts/autopark_baseline/parking_arc_calib_ste105_combined_20260613.jsonl:4",
+          "date": "2026-06-13",
+          "log": "artifacts/autopark_baseline/parking_arc_calib_ste105_combined_20260613.jsonl",
+          "motion_lineno": 4,
+          "action_id": "reverse_right_soft_6",
+          "command": "ARC D=-6.0 STE=105 V=1",
+          "bucket": {
+            "phase": "straighten_or_enter",
+            "x_err_sign": "+",
+            "x_err_bin": "0-40",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 1,
+            "linenos": [
+              3
+            ],
+            "phase_hint": "straighten_or_enter",
+            "stable_rows": 1,
+            "slot_y_dist_cm": 37.122,
+            "slot_x_err_px": 7.84,
+            "slot_entry_x_err_px": 6.79,
+            "slot_lateral_cm": 0.473,
+            "slot_heading_err_deg": -1.507,
+            "min_margin_px": 242.58,
+            "left_margin_px": 242.58,
+            "right_margin_px": 258.26,
+            "confidence": 0.799,
+            "pose_quality": 0.933
+          },
+          "post": {
+            "count": 3,
+            "linenos": [
+              7,
+              8,
+              9
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 3,
+            "slot_y_dist_cm": 34.881,
+            "slot_x_err_px": -29.023,
+            "slot_entry_x_err_px": -27.633,
+            "slot_lateral_cm": 3.129,
+            "slot_heading_err_deg": 1.987,
+            "min_margin_px": 238.653,
+            "left_margin_px": 296.693,
+            "right_margin_px": 238.653,
+            "confidence": 0.886,
+            "pose_quality": 0.957
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.241,
+            "slot_x_err_px": -36.863,
+            "slot_entry_x_err_px": -34.423,
+            "slot_lateral_cm": 2.656,
+            "slot_heading_err_deg": 3.494,
+            "min_margin_px": -3.927,
+            "left_margin_px": 54.113,
+            "right_margin_px": -19.607
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": 21.183,
+            "lat_abs_delta": 2.656,
+            "heading_abs_delta": 0.48,
+            "margin_delta": -3.927,
+            "x_improved": false,
+            "x_worsened": true,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": true
+          },
+          "stm32": {
+            "pre_servo_response": "",
+            "pwm_after_pre_servo": "",
+            "motion_response": "ACK 1005 ARC\r\nTLM 0 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 1 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 2 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 3 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 4 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 5 YAW=-6.5 X=0.0 Y=0.0 D=0.0 V=0.0 ANG=105.0 IMU=OK\r\nTLM 6 YAW=-6.5 X=0.0 Y=-0.1 D=0.1 V=-2.5 ANG=105.0 IMU=OK\r\nTLM 7 YAW=-6.4 X=0.0 Y=-0.2 D=0.2 V=0.0 ANG=105.0 IMU=OK\r\nTLM 8 YAW=-6.4 X=0.0 Y=-0.3 D=0.3 V=-0.2 ANG=105.0 IMU=OK\r\nTLM 9 YAW=-6.0 X=0.0 Y=-1.6 D=1.6 V=-10.5 ANG=105.0 IMU=OK\r\nDONE 1005 ARC X=0.1 Y=-4.1 D=4.1 YAW=-5.5",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=90.0 YAW=-5.0 X=0.2 Y=-6.7 D=6.8 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -2.241,
+        "slot_x_err_px": -36.863,
+        "slot_entry_x_err_px": -34.423,
+        "slot_lateral_cm": 2.656,
+        "slot_heading_err_deg": 3.494,
+        "min_margin_px": -3.927,
+        "left_margin_px": 54.113,
+        "right_margin_px": -19.607
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_right_soft_6",
+      "command": "ARC D=-6.0 STE=105 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_soft_6_20260622_s4t3_reverse_right_soft_6_auto_return_sample3_sessionbase_return30_combined.jsonl:105",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_soft_6_20260622_s4t3_reverse_right_soft_6_auto_return_sample3_sessionbase_return30_combined.jsonl",
+          "motion_lineno": 105,
+          "action_id": "reverse_right_soft_6",
+          "command": "ARC D=-6.0 STE=105 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              83,
+              85,
+              87,
+              89,
+              91,
+              93,
+              95,
+              97,
+              99,
+              104
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 38.481,
+            "slot_x_err_px": 47.983,
+            "slot_entry_x_err_px": 48.116,
+            "slot_lateral_cm": -1.734,
+            "slot_heading_err_deg": 0.598,
+            "min_margin_px": 171.32,
+            "left_margin_px": 171.32,
+            "right_margin_px": 267.286,
+            "confidence": 0.555,
+            "pose_quality": 0.864
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              109,
+              115,
+              117,
+              119,
+              121,
+              123,
+              125,
+              127,
+              129,
+              131
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.91,
+            "slot_x_err_px": 36.03,
+            "slot_entry_x_err_px": 36.73,
+            "slot_lateral_cm": -0.927,
+            "slot_heading_err_deg": 1.265,
+            "min_margin_px": 193.39,
+            "left_margin_px": 193.39,
+            "right_margin_px": 265.46,
+            "confidence": 0.757,
+            "pose_quality": 0.922
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.571,
+            "slot_x_err_px": -11.953,
+            "slot_entry_x_err_px": -11.386,
+            "slot_lateral_cm": 0.807,
+            "slot_heading_err_deg": 0.667,
+            "min_margin_px": 22.07,
+            "left_margin_px": 22.07,
+            "right_margin_px": -1.826
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -11.953,
+            "lat_abs_delta": -0.807,
+            "heading_abs_delta": 0.667,
+            "margin_delta": 22.07,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": false,
+            "heading_worsened": true,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=105.0 PULSE=1583 PSC=71 ARR=19999 CCR2=1583 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-4.2 D=4.2 YAW=-4.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-3.8 X=0.2 Y=-5.3 D=5.4 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -1.571,
+        "slot_x_err_px": -11.953,
+        "slot_entry_x_err_px": -11.386,
+        "slot_lateral_cm": 0.807,
+        "slot_heading_err_deg": 0.667,
+        "min_margin_px": 22.07,
+        "left_margin_px": 22.07,
+        "right_margin_px": -1.826
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "improved": 1
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_straight_4",
+      "command": "ARC D=-4.0 STE=100 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_transition_reverse_straight_4_sessionbase_r3_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_transition_reverse_straight_4_sessionbase_r3_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_straight_4",
+          "command": "ARC D=-4.0 STE=100 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 37.357,
+            "slot_x_err_px": 67.231,
+            "slot_entry_x_err_px": 64.264,
+            "slot_lateral_cm": -3.455,
+            "slot_heading_err_deg": -4.082,
+            "min_margin_px": 155.904,
+            "left_margin_px": 155.904,
+            "right_margin_px": 290.359,
+            "confidence": 0.71,
+            "pose_quality": 0.895
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              39,
+              45,
+              47,
+              49,
+              51,
+              53,
+              55,
+              57,
+              59,
+              61
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.382,
+            "slot_x_err_px": 64.77,
+            "slot_entry_x_err_px": 57.15,
+            "slot_lateral_cm": -4.079,
+            "slot_heading_err_deg": -11.139,
+            "min_margin_px": 170.41,
+            "left_margin_px": 170.41,
+            "right_margin_px": 299.94,
+            "confidence": 0.83,
+            "pose_quality": 0.899
+          },
+          "delta": {
+            "slot_y_dist_cm": -2.975,
+            "slot_x_err_px": -2.461,
+            "slot_entry_x_err_px": -7.114,
+            "slot_lateral_cm": -0.624,
+            "slot_heading_err_deg": -7.057,
+            "min_margin_px": 14.506,
+            "left_margin_px": 14.506,
+            "right_margin_px": 9.581
+          },
+          "verdict": "worsened",
+          "verdict_flags": {
+            "x_abs_delta": -2.461,
+            "lat_abs_delta": 0.624,
+            "heading_abs_delta": 7.057,
+            "margin_delta": 14.506,
+            "x_improved": false,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": true,
+            "heading_improved": false,
+            "heading_worsened": true,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=-0.0 Y=-2.2 D=2.2 YAW=0.2",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.2 X=-0.0 Y=-3.1 D=3.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -2.975,
+        "slot_x_err_px": -2.461,
+        "slot_entry_x_err_px": -7.114,
+        "slot_lateral_cm": -0.624,
+        "slot_heading_err_deg": -7.057,
+        "min_margin_px": 14.506,
+        "left_margin_px": 14.506,
+        "right_margin_px": 9.581
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "worsened": 1
+      },
+      "dominant_verdict": "worsened"
+    },
+    {
+      "action_id": "reverse_straight_4",
+      "command": "ARC D=-4.0 STE=100 V=1",
+      "bucket": {
+        "phase": "approach_entry",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_reverse_straight_4_auto_return_sample2_sessionbase_retry_longstable_combined.jsonl:74",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_reverse_straight_4_auto_return_sample2_sessionbase_retry_longstable_combined.jsonl",
+          "motion_lineno": 74,
+          "action_id": "reverse_straight_4",
+          "command": "ARC D=-4.0 STE=100 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              51,
+              53,
+              55,
+              57,
+              59,
+              61,
+              63,
+              65,
+              67,
+              73
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 40.041,
+            "slot_x_err_px": 76.446,
+            "slot_entry_x_err_px": 71.268,
+            "slot_lateral_cm": -4.414,
+            "slot_heading_err_deg": -7.516,
+            "min_margin_px": 130.0,
+            "left_margin_px": 130.0,
+            "right_margin_px": 282.892,
+            "confidence": 0.73,
+            "pose_quality": 0.886
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              78,
+              84,
+              86,
+              88,
+              90,
+              92,
+              94,
+              96,
+              98,
+              100
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.987,
+            "slot_x_err_px": 60.722,
+            "slot_entry_x_err_px": 56.623,
+            "slot_lateral_cm": -3.246,
+            "slot_heading_err_deg": -5.886,
+            "min_margin_px": 149.29,
+            "left_margin_px": 149.29,
+            "right_margin_px": 270.735,
+            "confidence": 0.708,
+            "pose_quality": 0.886
+          },
+          "delta": {
+            "slot_y_dist_cm": -5.054,
+            "slot_x_err_px": -15.724,
+            "slot_entry_x_err_px": -14.645,
+            "slot_lateral_cm": 1.168,
+            "slot_heading_err_deg": 1.63,
+            "min_margin_px": 19.29,
+            "left_margin_px": 19.29,
+            "right_margin_px": -12.157
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -15.724,
+            "lat_abs_delta": -1.168,
+            "heading_abs_delta": -1.63,
+            "margin_delta": 19.29,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-2.2 D=2.2 YAW=-8.0",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-7.7 X=0.1 Y=-3.0 D=3.0 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_reverse_straight_4_auto_return_sample3_sessionbase_return20_combined.jsonl:73",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_4_20260622_s4t3_reverse_straight_4_auto_return_sample3_sessionbase_return20_combined.jsonl",
+          "motion_lineno": 73,
+          "action_id": "reverse_straight_4",
+          "command": "ARC D=-4.0 STE=100 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              51,
+              53,
+              55,
+              57,
+              59,
+              61,
+              63,
+              65,
+              67,
+              72
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 40.111,
+            "slot_x_err_px": 75.14,
+            "slot_entry_x_err_px": 70.53,
+            "slot_lateral_cm": -4.227,
+            "slot_heading_err_deg": -6.624,
+            "min_margin_px": 131.61,
+            "left_margin_px": 131.61,
+            "right_margin_px": 281.9,
+            "confidence": 0.744,
+            "pose_quality": 0.894
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              77,
+              83,
+              85,
+              87,
+              89,
+              91,
+              93,
+              95,
+              97,
+              99
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.975,
+            "slot_x_err_px": 62.54,
+            "slot_entry_x_err_px": 58.46,
+            "slot_lateral_cm": -3.368,
+            "slot_heading_err_deg": -5.886,
+            "min_margin_px": 149.29,
+            "left_margin_px": 149.29,
+            "right_margin_px": 274.37,
+            "confidence": 0.701,
+            "pose_quality": 0.884
+          },
+          "delta": {
+            "slot_y_dist_cm": -5.136,
+            "slot_x_err_px": -12.6,
+            "slot_entry_x_err_px": -12.07,
+            "slot_lateral_cm": 0.859,
+            "slot_heading_err_deg": 0.738,
+            "min_margin_px": 17.68,
+            "left_margin_px": 17.68,
+            "right_margin_px": -7.53
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -12.6,
+            "lat_abs_delta": -0.859,
+            "heading_abs_delta": -0.738,
+            "margin_delta": 17.68,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-2.2 D=2.2 YAW=-8.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-7.9 X=0.0 Y=-2.9 D=2.9 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -5.095,
+        "slot_x_err_px": -14.162,
+        "slot_entry_x_err_px": -13.357,
+        "slot_lateral_cm": 1.014,
+        "slot_heading_err_deg": 1.184,
+        "min_margin_px": 18.485,
+        "left_margin_px": 18.485,
+        "right_margin_px": -9.844
+      },
+      "n": 2,
+      "confidence": 0.5,
+      "verdict_counts": {
+        "improved": 2
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_straight_6",
+      "command": "ARC D=-6.0 STE=100 V=1",
+      "bucket": {
+        "phase": "approach_entry",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "-8-0"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_reverse_straight_6_auto_return_sample2_sessionbase_return30_combined.jsonl:105",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_reverse_straight_6_auto_return_sample2_sessionbase_return30_combined.jsonl",
+          "motion_lineno": 105,
+          "action_id": "reverse_straight_6",
+          "command": "ARC D=-6.0 STE=100 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              83,
+              85,
+              87,
+              89,
+              91,
+              93,
+              95,
+              97,
+              99,
+              104
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 40.264,
+            "slot_x_err_px": 78.14,
+            "slot_entry_x_err_px": 73.21,
+            "slot_lateral_cm": -4.461,
+            "slot_heading_err_deg": -7.079,
+            "min_margin_px": 126.87,
+            "left_margin_px": 126.87,
+            "right_margin_px": 283.14,
+            "confidence": 0.748,
+            "pose_quality": 0.893
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              109,
+              115,
+              117,
+              119,
+              121,
+              123,
+              125,
+              127,
+              129,
+              131
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.294,
+            "slot_x_err_px": 63.864,
+            "slot_entry_x_err_px": 59.684,
+            "slot_lateral_cm": -3.405,
+            "slot_heading_err_deg": -5.705,
+            "min_margin_px": 152.772,
+            "left_margin_px": 152.772,
+            "right_margin_px": 280.5,
+            "confidence": 0.792,
+            "pose_quality": 0.912
+          },
+          "delta": {
+            "slot_y_dist_cm": -4.97,
+            "slot_x_err_px": -14.276,
+            "slot_entry_x_err_px": -13.526,
+            "slot_lateral_cm": 1.056,
+            "slot_heading_err_deg": 1.374,
+            "min_margin_px": 25.902,
+            "left_margin_px": 25.902,
+            "right_margin_px": -2.64
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -14.276,
+            "lat_abs_delta": -1.056,
+            "heading_abs_delta": -1.374,
+            "margin_delta": 25.902,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-4.2 D=4.2 YAW=-7.8",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-7.6 X=0.1 Y=-5.1 D=5.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        },
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_reverse_straight_6_auto_return_sample3_sessionbase_return30_combined.jsonl:105",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_reverse_straight_6_auto_return_sample3_sessionbase_return30_combined.jsonl",
+          "motion_lineno": 105,
+          "action_id": "reverse_straight_6",
+          "command": "ARC D=-6.0 STE=100 V=1",
+          "bucket": {
+            "phase": "approach_entry",
+            "x_err_sign": "+",
+            "x_err_bin": "40-120",
+            "heading_bin": "-8-0"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              83,
+              85,
+              87,
+              89,
+              91,
+              93,
+              95,
+              97,
+              99,
+              104
+            ],
+            "phase_hint": "approach_entry",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 40.814,
+            "slot_x_err_px": 80.075,
+            "slot_entry_x_err_px": 74.929,
+            "slot_lateral_cm": -4.613,
+            "slot_heading_err_deg": -7.375,
+            "min_margin_px": 127.077,
+            "left_margin_px": 127.077,
+            "right_margin_px": 287.219,
+            "confidence": 0.725,
+            "pose_quality": 0.885
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              109,
+              115,
+              117,
+              119,
+              121,
+              123,
+              125,
+              127,
+              129,
+              131
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 35.503,
+            "slot_x_err_px": 66.11,
+            "slot_entry_x_err_px": 61.92,
+            "slot_lateral_cm": -3.592,
+            "slot_heading_err_deg": -5.896,
+            "min_margin_px": 153.23,
+            "left_margin_px": 153.23,
+            "right_margin_px": 285.45,
+            "confidence": 0.765,
+            "pose_quality": 0.903
+          },
+          "delta": {
+            "slot_y_dist_cm": -5.311,
+            "slot_x_err_px": -13.965,
+            "slot_entry_x_err_px": -13.009,
+            "slot_lateral_cm": 1.021,
+            "slot_heading_err_deg": 1.479,
+            "min_margin_px": 26.153,
+            "left_margin_px": 26.153,
+            "right_margin_px": -1.769
+          },
+          "verdict": "improved",
+          "verdict_flags": {
+            "x_abs_delta": -13.965,
+            "lat_abs_delta": -1.021,
+            "heading_abs_delta": -1.479,
+            "margin_delta": 26.153,
+            "x_improved": true,
+            "x_worsened": false,
+            "lat_improved": true,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": true,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.1 Y=-4.1 D=4.1 YAW=-7.9",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=-7.7 X=0.1 Y=-5.1 D=5.1 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -5.14,
+        "slot_x_err_px": -14.12,
+        "slot_entry_x_err_px": -13.268,
+        "slot_lateral_cm": 1.038,
+        "slot_heading_err_deg": 1.427,
+        "min_margin_px": 26.027,
+        "left_margin_px": 26.027,
+        "right_margin_px": -2.204
+      },
+      "n": 2,
+      "confidence": 0.5,
+      "verdict_counts": {
+        "improved": 2
+      },
+      "dominant_verdict": "improved"
+    },
+    {
+      "action_id": "reverse_straight_6",
+      "command": "ARC D=-6.0 STE=100 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "-",
+        "x_err_bin": "40-120",
+        "heading_bin": "0-8"
+      },
+      "samples": [
+        {
+          "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_arc_dminus6_ste100_live_current_baseline_r2_combined.jsonl:35",
+          "date": "2026-06-12",
+          "log": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_straight_6_20260622_s4t3_arc_dminus6_ste100_live_current_baseline_r2_combined.jsonl",
+          "motion_lineno": 35,
+          "action_id": "reverse_straight_6",
+          "command": "ARC D=-6.0 STE=100 V=1",
+          "bucket": {
+            "phase": "align_in_corridor",
+            "x_err_sign": "-",
+            "x_err_bin": "40-120",
+            "heading_bin": "0-8"
+          },
+          "pre": {
+            "count": 10,
+            "linenos": [
+              13,
+              15,
+              17,
+              19,
+              21,
+              23,
+              25,
+              27,
+              29,
+              34
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 36.009,
+            "slot_x_err_px": -116.32,
+            "slot_entry_x_err_px": -112.31,
+            "slot_lateral_cm": 8.41,
+            "slot_heading_err_deg": 4.472,
+            "min_margin_px": 90.02,
+            "left_margin_px": 322.67,
+            "right_margin_px": 90.02,
+            "confidence": 0.866,
+            "pose_quality": 0.911
+          },
+          "post": {
+            "count": 10,
+            "linenos": [
+              36,
+              42,
+              44,
+              46,
+              48,
+              50,
+              52,
+              54,
+              56,
+              58
+            ],
+            "phase_hint": "align_in_corridor",
+            "stable_rows": 10,
+            "slot_y_dist_cm": 34.376,
+            "slot_x_err_px": -115.354,
+            "slot_entry_x_err_px": -112.185,
+            "slot_lateral_cm": 8.25,
+            "slot_heading_err_deg": 3.231,
+            "min_margin_px": 88.769,
+            "left_margin_px": 319.474,
+            "right_margin_px": 88.769,
+            "confidence": 0.899,
+            "pose_quality": 0.923
+          },
+          "delta": {
+            "slot_y_dist_cm": -1.633,
+            "slot_x_err_px": 0.966,
+            "slot_entry_x_err_px": 0.125,
+            "slot_lateral_cm": -0.16,
+            "slot_heading_err_deg": -1.241,
+            "min_margin_px": -1.251,
+            "left_margin_px": -3.196,
+            "right_margin_px": -1.251
+          },
+          "verdict": "mixed",
+          "verdict_flags": {
+            "x_abs_delta": -0.966,
+            "lat_abs_delta": -0.16,
+            "heading_abs_delta": -1.241,
+            "margin_delta": -1.251,
+            "x_improved": false,
+            "x_worsened": false,
+            "lat_improved": false,
+            "lat_worsened": false,
+            "heading_improved": true,
+            "heading_worsened": false,
+            "margin_improved": false,
+            "margin_worsened": false
+          },
+          "stm32": {
+            "pre_servo_response": "DONE 1004 SERVO",
+            "pwm_after_pre_servo": "PWM 1005 HEALTH=1 EN=1 ANG=100.0 PULSE=1555 PSC=71 ARR=19999 CCR2=1555 CCER=0x0010 RECOV=0",
+            "motion_response": "ACK 1006 ARC\r\nDONE 1006 ARC X=0.0 Y=-4.0 D=4.0 YAW=0.1",
+            "stat_after": "STAT 1008 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=100.0 YAW=0.1 X=0.0 Y=-4.6 D=4.6 VEL=0.0 DROP=0 IMU=OK"
+          }
+        }
+      ],
+      "mean_delta": {
+        "slot_y_dist_cm": -1.633,
+        "slot_x_err_px": 0.966,
+        "slot_entry_x_err_px": 0.125,
+        "slot_lateral_cm": -0.16,
+        "slot_heading_err_deg": -1.241,
+        "min_margin_px": -1.251,
+        "left_margin_px": -3.196,
+        "right_margin_px": -1.251
+      },
+      "n": 1,
+      "confidence": 0.333,
+      "verdict_counts": {
+        "mixed": 1
+      },
+      "dominant_verdict": "mixed"
+    }
+  ],
+  "legacy_records": [
+    {
+      "action_id": "reverse_left_hard_6",
+      "command": "ARC D=-6.0 STE=60 V=1",
+      "source": "artifacts/autopark_baseline/parking_probe_left_20260612.jsonl",
+      "sample_count": 1,
+      "confidence": 0.9,
+      "context": {
+        "phase_hint": "approach_entry",
+        "before_slot_x_err_px": 18.0,
+        "before_slot_lateral_cm": -0.01,
+        "before_min_margin_px": 186.0
+      },
+      "delta": {
+        "slot_y_dist_cm": -2.41,
+        "slot_x_err_px": 28.0,
+        "slot_lateral_cm": -1.67,
+        "slot_heading_err_deg": -0.05,
+        "min_margin_px": -24.0
+      },
+      "verdict": "worsened",
+      "notes": "Do not promote this direction from the measured pose."
+    }
+  ],
+  "updated_from": [
+    {
+      "sample_id": "D:/code_space/IDE/HiSilicon/ss928_projects/artifacts/autopark_baseline/parking_probe_reverse_right_soft_6_20260622_s4t3_reverse_right_soft_6_auto_return_sample3_sessionbase_return30_combined.jsonl:105",
+      "action_id": "reverse_right_soft_6",
+      "command": "ARC D=-6.0 STE=105 V=1",
+      "bucket": {
+        "phase": "align_in_corridor",
+        "x_err_sign": "+",
+        "x_err_bin": "40-120",
+        "heading_bin": "0-8"
+      },
+      "delta": {
+        "slot_y_dist_cm": -1.571,
+        "slot_x_err_px": -11.953,
+        "slot_entry_x_err_px": -11.386,
+        "slot_lateral_cm": 0.807,
+        "slot_heading_err_deg": 0.667,
+        "min_margin_px": 22.07,
+        "left_margin_px": 22.07,
+        "right_margin_px": -1.826
+      },
+      "verdict": "improved"
+    }
+  ]
+}

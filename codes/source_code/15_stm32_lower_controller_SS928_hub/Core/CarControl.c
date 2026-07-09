@@ -1,0 +1,740 @@
+#include "stm32f10x.h"
+#include "CarControl.h"
+#include "CarProtocol.h"
+#include "Motors.h"
+#include "OLED_StateAnim.h"
+#include "PWMO.h"
+#include "USART.h"
+
+#include <math.h>
+
+int8_t is_up = 1;
+uint8_t is_Pause = 1;
+int8_t is_turn = 0;
+int8_t is_straight = 0;
+RS rS = STANDBY;
+
+float Angle = 0.0f;
+BMI270 MM;
+
+float New_Yaw = 0.0f;
+float New_Roll = 0.0f;
+float New_Pitch = 0.0f;
+float Org_Yaw = 0.0f;
+
+KalmanFilter Kal_Yaw;
+KalmanFilter Kal_Roll;
+KalmanFilter Kal_Pitch;
+
+volatile uint8_t TelemetryReady = 0;
+volatile uint32_t ControlTicks = 0;
+
+float TargetYaw = 0.0f;
+uint8_t AutoSpeedLevel = AUTO_DEFAULT_SPEED;
+uint8_t SpeedLimitLevel = AUTO_MAX_SPEED;
+float SteerMinAngle = SERVO_SAFE_MIN_ANGLE;
+float SteerMaxAngle = SERVO_SAFE_MAX_ANGLE;
+float YawReportOffset = 0.0f;
+
+typedef enum ControlMode
+{
+	CTRL_IDLE = 0,
+	CTRL_MANUAL,
+	CTRL_STRAIGHT,
+	CTRL_DISTANCE,
+	CTRL_TURN_YAW,
+	CTRL_ARC,
+	CTRL_AUTO_ROUTE
+} ControlMode_t;
+
+typedef enum AutoStep
+{
+	AUTO_IDLE = 0,
+	AUTO_FORWARD1,
+	AUTO_TURN1,
+	AUTO_FORWARD2
+} AutoStep_t;
+
+static ControlMode_t ControlMode = CTRL_IDLE;
+static AutoStep_t AutoStep = AUTO_IDLE;
+static uint32_t LastCommandTick = 0;
+static uint32_t ActionStartTick = 0;
+static float TargetDistanceCm = 0.0f;
+
+#define ACKERMANN_CENTER_DEG      STEERING_CENTER_DEG
+#define ACKERMANN_MIN_STEER_DEG   0.5f
+#define DEG_TO_RAD                0.01745329252f
+
+static float AbsFloat(float value)
+{
+	return value < 0.0f ? -value : value;
+}
+
+float ClampFloat(float value, float minValue, float maxValue)
+{
+	if(value < minValue) return minValue;
+	if(value > maxValue) return maxValue;
+	return value;
+}
+
+static float NormalizeYaw(float yaw)
+{
+	while(yaw > 180.0f) yaw -= 360.0f;
+	while(yaw < -180.0f) yaw += 360.0f;
+	return yaw;
+}
+
+static float GetYawError(float target, float current)
+{
+	return NormalizeYaw(target - current);
+}
+
+float GetReportedYaw(void)
+{
+	return NormalizeYaw(New_Yaw - YawReportOffset);
+}
+
+const char *ControlModeName(void)
+{
+	switch(ControlMode)
+	{
+	case CTRL_IDLE: return "IDLE";
+	case CTRL_MANUAL: return "MANUAL";
+	case CTRL_STRAIGHT: return "STRAIGHT";
+	case CTRL_DISTANCE: return "DISTANCE";
+	case CTRL_TURN_YAW: return "TURN";
+	case CTRL_ARC: return "ARC";
+	case CTRL_AUTO_ROUTE: return "AUTO";
+	default: return "UNKNOWN";
+	}
+}
+
+const char *RunStateName(void)
+{
+	switch(rS)
+	{
+	case STANDBY: return "STANDBY";
+	case PARKING: return "PARKING";
+	case HITTED: return "HITTED";
+	default: return "UNKNOWN";
+	}
+}
+
+void SetRunState(RS state)
+{
+	RS previousState = rS;
+
+	if(previousState == state)
+	{
+		return;
+	}
+
+	rS = state;
+	OLED_StateAnim_OnTransition(previousState, state, ControlTicks);
+}
+
+void RefreshCommandWatchdog(void)
+{
+	LastCommandTick = ControlTicks;
+}
+
+void SetSteeringAngle(float angle)
+{
+	Angle = ClampFloat(angle, SteerMinAngle, SteerMaxAngle);
+	SetServoRotation(Angle);
+}
+
+static void CenterSteering(void)
+{
+	SetSteeringAngle(ACKERMANN_CENTER_DEG);
+}
+
+static void ApplyAckermannSpeedScale(float steerAngle)
+{
+	float steerOffset = steerAngle - ACKERMANN_CENTER_DEG;
+	float tanSteer;
+	float radius;
+	float halfTrack;
+	float leftScale;
+	float rightScale;
+
+	if(AbsFloat(steerOffset) < ACKERMANN_MIN_STEER_DEG)
+	{
+		Motor_ResetSpeedScale();
+		return;
+	}
+
+	tanSteer = tanf(steerOffset * DEG_TO_RAD);
+	if(AbsFloat(tanSteer) < 0.0001f)
+	{
+		Motor_ResetSpeedScale();
+		return;
+	}
+
+	radius = ACKERMANN_WHEEL_BASE_CM / tanSteer;
+	halfTrack = WHEEL_TRACK_CM * 0.5f;
+	leftScale = (radius - halfTrack) / radius;
+	rightScale = (radius + halfTrack) / radius;
+
+	Motor_SetSpeedScale(leftScale, rightScale);
+}
+
+static void HardStopMotion(void)
+{
+	SpeedRank = 0;
+	rSetSpeed(0);
+	lSetSpeed(0);
+	InitAll();
+	CenterSteering();
+	is_straight = 0;
+	is_turn = 0;
+	AutoStep = AUTO_IDLE;
+	ControlMode = CTRL_IDLE;
+}
+
+static OLED_ActionVisual_t MotionActionFromDirection(void)
+{
+	return is_up >= 0 ? OLED_ACTION_FORWARD : OLED_ACTION_REVERSE;
+}
+
+static OLED_ActionVisual_t ArcActionFromSteering(float steerAngle)
+{
+	return steerAngle >= ACKERMANN_CENTER_DEG ? OLED_ACTION_ARC_LEFT : OLED_ACTION_ARC_RIGHT;
+}
+
+void PrintTelemetry(void)
+{
+	Odometry_t snapshot;
+	static uint8_t telemetrySeq = 0;
+
+	Odometry_GetSnapshot(&snapshot);
+	USART3_printf("TLM %u YAW=%.1f X=%.1f Y=%.1f D=%.1f V=%.1f ANG=%.1f IMU=%s\r\n",
+	              telemetrySeq++, GetReportedYaw(), snapshot.x, snapshot.y,
+	              snapshot.distance, aveSpeed, Angle,
+	              BMI270_IsFault() ? "FAULT" : "OK");
+}
+
+void PrintLegacyTelemetry(void)
+{
+	Odometry_t snapshot;
+
+	Odometry_GetSnapshot(&snapshot);
+
+	/* Read temperature for drift correlation */
+	BMI270_GetTemp(&MM);
+
+	/*
+	 * Telemetry CSV format (15 fields):
+	 *   [0]  GyroX_dps     = MM.GyroX / 16.4  (陀螺X轴 °/s)
+	 *   [1]  Yaw_kal       = Kalman-filtered yaw (deg)
+	 *   [2]  Angle         = servo angle (deg)
+	 *   [3]  Speed         = average motor speed
+	 *   [4]  OdomX         = odometry X (cm)
+	 *   [5]  OdomY         = odometry Y (cm)
+	 *   [6]  Kp            = heading PID Kp
+	 *   [7]  Ki            = heading PID Ki
+	 *   [8]  Kd            = heading PID Kd
+	 *   [9]  GyrX_raw      = MM.GyroX (raw LSB) — for bias analysis
+	 *   [10] GyrY_raw      = MM.GyroY (raw LSB)
+	 *   [11] GyrZ_raw      = MM.GyroZ (raw LSB) — yaw-rate bias source
+	 *   [12] Yaw_cf        = MM.yaw (complementary filter, pre-Kalman)
+	 *   [13] Temp          = MM.temp (Celsius) — for temp-drift correlation
+	 *   [14] Tick          = ControlTicks (ms)
+	 *
+	 * Fields 0-8 remain backward-compatible with existing Python tools.
+	 */
+	USART3_printf("%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,"
+	              "%d,%d,%d,%.3f,%.2f,%lu\r\n",
+	              MM.GyroX / 16.4f, GetReportedYaw(), Angle, aveSpeed,
+	              snapshot.x, snapshot.y,
+	              headingPID.Kp, headingPID.Ki, headingPID.Kd,
+	              (int)MM.GyroX, (int)MM.GyroY, (int)MM.GyroZ,
+	              MM.yaw, MM.temp, (unsigned long)ControlTicks);
+}
+
+void SetStandbyMode(void)
+{
+	HardStopMotion();
+	SetRunState(STANDBY);
+	OLED_StateAnim_ShowAction(OLED_ACTION_IDLE, ControlTicks);
+}
+
+void SetManualMode(void)
+{
+	if(IsAutoMotionMode())
+	{
+		AutoStep = AUTO_IDLE;
+	}
+	ControlMode = CTRL_MANUAL;
+	is_straight = 0;
+	is_turn = 0;
+	headingPID.CrossTrackEnable = 0;
+	Motor_ResetSpeedScale();
+}
+
+void SetManualModeIfIdle(void)
+{
+	if(ControlMode == CTRL_IDLE)
+	{
+		SetManualMode();
+	}
+}
+
+uint8_t IsAutoMotionMode(void)
+{
+	return (ControlMode == CTRL_AUTO_ROUTE ||
+	        ControlMode == CTRL_DISTANCE ||
+	        ControlMode == CTRL_TURN_YAW ||
+	        ControlMode == CTRL_ARC);
+}
+
+static void EnsureAutoSpeed(void)
+{
+	if(AutoSpeedLevel > SpeedLimitLevel)
+	{
+		AutoSpeedLevel = SpeedLimitLevel;
+	}
+	if(SpeedRank == 0)
+	{
+		SetSpeedRank(AutoSpeedLevel);
+	}
+}
+
+void PrepareStraightHold(void)
+{
+	Set_Straight();
+	ControlMode = CTRL_STRAIGHT;
+	AutoStep = AUTO_IDLE;
+	OLED_StateAnim_ShowAction(OLED_ACTION_STRAIGHT, ControlTicks);
+}
+
+static uint8_t PrepareDistanceDrive(float distanceCm)
+{
+	if(AbsFloat(distanceCm) < 1.0f)
+	{
+		return 0;
+	}
+
+	if(distanceCm < 0.0f)
+	{
+		if(is_up == 1)
+		{
+			ExDirect(0);
+		}
+		TargetDistanceCm = -distanceCm;
+	}
+	else
+	{
+		if(is_up == -1)
+		{
+			ExDirect(1);
+		}
+		TargetDistanceCm = distanceCm;
+	}
+
+	Set_Straight();
+	Odometry_Reset();
+	ActionStartTick = ControlTicks;
+	EnsureAutoSpeed();
+	OLED_StateAnim_ShowAction(MotionActionFromDirection(), ControlTicks);
+	return 1;
+}
+
+uint8_t StartDistanceDrive(float distanceCm)
+{
+	if(PrepareDistanceDrive(distanceCm))
+	{
+		ControlMode = CTRL_DISTANCE;
+		AutoStep = AUTO_IDLE;
+		if(!CarProtocol_IsQuiet())
+		{
+			USART3_printf("Distance drive %.1f cm\r\n", TargetDistanceCm);
+		}
+		return 1;
+	}
+
+	if(!CarProtocol_IsQuiet())
+	{
+		USART3_printf("Invalid distance target!\r\n");
+	}
+	return 0;
+}
+
+static uint8_t PrepareYawTurn(float relativeYawDeg)
+{
+	if(BMI270_IsFault())
+	{
+		return 0;
+	}
+
+	if(AbsFloat(relativeYawDeg) < TURN_DONE_DEG)
+	{
+		return 0;
+	}
+
+	TargetYaw = NormalizeYaw(New_Yaw + relativeYawDeg);
+	is_straight = 0;
+	is_turn = 1;
+	headingPID.CrossTrackEnable = 0;
+	Motor_ResetSpeedScale();
+	ActionStartTick = ControlTicks;
+	EnsureAutoSpeed();
+	OLED_StateAnim_ShowAction(relativeYawDeg > 0.0f ? OLED_ACTION_TURN_LEFT : OLED_ACTION_TURN_RIGHT,
+	                          ControlTicks);
+	return 1;
+}
+
+uint8_t StartYawTurn(float relativeYawDeg)
+{
+	if(PrepareYawTurn(relativeYawDeg))
+	{
+		ControlMode = CTRL_TURN_YAW;
+		AutoStep = AUTO_IDLE;
+		if(!CarProtocol_IsQuiet())
+		{
+			USART3_printf("Yaw turn %.1f deg\r\n", relativeYawDeg);
+		}
+		return 1;
+	}
+
+	if(!CarProtocol_IsQuiet())
+	{
+		USART3_printf("Invalid yaw target!\r\n");
+	}
+	return 0;
+}
+
+uint8_t StartArcDrive(float distanceCm, float steerDeg)
+{
+	if(AbsFloat(distanceCm) < 1.0f)
+	{
+		if(!CarProtocol_IsQuiet())
+		{
+			USART3_printf("Invalid arc distance!\r\n");
+		}
+		return 0;
+	}
+
+	if(distanceCm < 0.0f)
+	{
+		if(is_up == 1)
+		{
+			ExDirect(0);
+		}
+		TargetDistanceCm = -distanceCm;
+	}
+	else
+	{
+		if(is_up == -1)
+		{
+			ExDirect(1);
+		}
+		TargetDistanceCm = distanceCm;
+	}
+
+	is_straight = 0;
+	is_turn = 0;
+	headingPID.CrossTrackEnable = 0;
+	SetSteeringAngle(steerDeg);
+	ApplyAckermannSpeedScale(Angle);
+	Odometry_Reset();
+	ActionStartTick = ControlTicks;
+	EnsureAutoSpeed();
+	ControlMode = CTRL_ARC;
+	AutoStep = AUTO_IDLE;
+	OLED_StateAnim_ShowAction(ArcActionFromSteering(Angle), ControlTicks);
+	if(!CarProtocol_IsQuiet())
+	{
+		USART3_printf("Arc drive %.1f cm steer %.1f deg\r\n", TargetDistanceCm, Angle);
+	}
+	return 1;
+}
+
+uint8_t StartAutoRoute(void)
+{
+	SetRunState(PARKING);
+	AutoSpeedLevel = AUTO_DEFAULT_SPEED;
+	ControlMode = CTRL_AUTO_ROUTE;
+	AutoStep = AUTO_FORWARD1;
+	if(PrepareDistanceDrive(AUTO_FORWARD1_CM))
+	{
+		if(!CarProtocol_IsQuiet())
+		{
+			USART3_printf("Auto route start\r\n");
+		}
+		return 1;
+	}
+
+	SetStandbyMode();
+	if(!CarProtocol_IsQuiet())
+	{
+		USART3_printf("Auto route failed\r\n");
+	}
+	return 0;
+}
+
+static uint8_t UpdateDistanceDrive(void)
+{
+	Odometry_t snapshot;
+
+	if(TargetDistanceCm <= 0.0f)
+	{
+		return 1;
+	}
+	Odometry_GetSnapshot(&snapshot);
+	if((TargetDistanceCm - snapshot.distance) <= DISTANCE_DONE_CM)
+	{
+		return 1;
+	}
+	return 0;
+}
+
+static uint8_t UpdateYawTurn(void)
+{
+	float error = GetYawError(TargetYaw, New_Yaw);
+	float correction;
+
+	if(AbsFloat(error) <= TURN_DONE_DEG)
+	{
+		SpeedRank = 0;
+		CenterSteering();
+		is_turn = 0;
+		return 1;
+	}
+
+	correction = ClampFloat(error * TURN_SERVO_KP, -TURN_SERVO_MAX_OFFSET, TURN_SERVO_MAX_OFFSET);
+	if(is_up == -1)
+	{
+		correction = -correction;
+	}
+
+	SetSteeringAngle(ACKERMANN_CENTER_DEG + correction);
+	EnsureAutoSpeed();
+	return 0;
+}
+
+void UpdateControlTask(void)
+{
+	if((ControlMode == CTRL_MANUAL || ControlMode == CTRL_STRAIGHT) &&
+	   SpeedRank != 0 &&
+	   (uint32_t)(ControlTicks - LastCommandTick) > REMOTE_TIMEOUT_MS)
+	{
+		SetStandbyMode();
+		USART3_printf("Remote timeout stop!\r\n");
+		return;
+	}
+
+	if((ControlMode == CTRL_DISTANCE || ControlMode == CTRL_ARC ||
+	   (ControlMode == CTRL_AUTO_ROUTE && (AutoStep == AUTO_FORWARD1 || AutoStep == AUTO_FORWARD2))) &&
+	   (uint32_t)(ControlTicks - ActionStartTick) > DISTANCE_TIMEOUT_MS)
+	{
+		SetStandbyMode();
+		if(!CarProtocol_HasActiveMotion())
+		{
+			USART3_printf("Distance timeout stop!\r\n");
+		}
+		CarProtocol_FinishActiveMotionErr("TIMEOUT");
+		return;
+	}
+
+	if((ControlMode == CTRL_TURN_YAW ||
+	   (ControlMode == CTRL_AUTO_ROUTE && AutoStep == AUTO_TURN1)) &&
+	   (uint32_t)(ControlTicks - ActionStartTick) > TURN_TIMEOUT_MS)
+	{
+		SetStandbyMode();
+		if(!CarProtocol_HasActiveMotion())
+		{
+			USART3_printf("Turn timeout stop!\r\n");
+		}
+		CarProtocol_FinishActiveMotionErr("TIMEOUT");
+		return;
+	}
+
+	if((ControlMode == CTRL_TURN_YAW ||
+	   (ControlMode == CTRL_AUTO_ROUTE && AutoStep == AUTO_TURN1)) &&
+	   BMI270_IsFault())
+	{
+		SetStandbyMode();
+		CarProtocol_FinishActiveMotionErr("IMU_FAULT");
+		return;
+	}
+
+	if(ControlMode == CTRL_DISTANCE)
+	{
+		if(UpdateDistanceDrive())
+		{
+			SetStandbyMode();
+			if(!CarProtocol_HasActiveMotion())
+			{
+				USART3_printf("Distance done\r\n");
+			}
+			CarProtocol_FinishActiveMotionOk("");
+		}
+	}
+	else if(ControlMode == CTRL_ARC)
+	{
+		if(UpdateDistanceDrive())
+		{
+			SetStandbyMode();
+			if(!CarProtocol_HasActiveMotion())
+			{
+				USART3_printf("Arc done\r\n");
+			}
+			CarProtocol_FinishActiveMotionOk("");
+		}
+	}
+	else if(ControlMode == CTRL_TURN_YAW)
+	{
+		if(UpdateYawTurn())
+		{
+			SetStandbyMode();
+			if(!CarProtocol_HasActiveMotion())
+			{
+				USART3_printf("Yaw turn done\r\n");
+			}
+			CarProtocol_FinishActiveMotionOk("");
+		}
+	}
+	else if(ControlMode == CTRL_AUTO_ROUTE)
+	{
+		if(AutoStep == AUTO_FORWARD1)
+		{
+			if(UpdateDistanceDrive())
+			{
+				SpeedRank = 0;
+				if(PrepareYawTurn(AUTO_TURN_DEG))
+				{
+					AutoStep = AUTO_TURN1;
+				}
+				else
+				{
+					SetStandbyMode();
+					if(!CarProtocol_HasActiveMotion())
+					{
+						USART3_printf("Auto turn failed\r\n");
+					}
+					CarProtocol_FinishActiveMotionErr("AUTO_TURN_FAIL");
+				}
+			}
+		}
+		else if(AutoStep == AUTO_TURN1)
+		{
+			if(UpdateYawTurn())
+			{
+				if(PrepareDistanceDrive(AUTO_FORWARD2_CM))
+				{
+					AutoStep = AUTO_FORWARD2;
+				}
+				else
+				{
+					SetStandbyMode();
+					if(!CarProtocol_HasActiveMotion())
+					{
+						USART3_printf("Auto forward failed\r\n");
+					}
+					CarProtocol_FinishActiveMotionErr("AUTO_FORWARD_FAIL");
+				}
+			}
+		}
+		else if(AutoStep == AUTO_FORWARD2)
+		{
+			if(UpdateDistanceDrive())
+			{
+				SetStandbyMode();
+				SetRunState(PARKING);
+				if(!CarProtocol_HasActiveMotion())
+				{
+					USART3_printf("Auto route done\r\n");
+				}
+				CarProtocol_FinishActiveMotionOk("");
+			}
+		}
+	}
+}
+
+void SpeedAcc(void)
+{
+	int16_t rank = ABS(SpeedRank);
+
+	if(rank < 720)
+	{
+		rank += SPEEDSTEP;
+		if(rank > 720) rank = 720;
+		SpeedRank = ABSTRACT(is_up) * rank;
+		SetSteeringAngle(Angle);
+		OLED_StateAnim_ShowAction(MotionActionFromDirection(), ControlTicks);
+	}
+}
+
+void SpeedSlowDown(void)
+{
+	int16_t rank = ABS(SpeedRank);
+
+	if(rank > 0)
+	{
+		rank -= SPEEDSTEP;
+		if(rank < 0) rank = 0;
+		SpeedRank = ABSTRACT(is_up) * rank;
+		OLED_StateAnim_ShowAction(rank == 0 ? OLED_ACTION_STOP : MotionActionFromDirection(), ControlTicks);
+	}
+}
+
+void ExDirect(uint8_t Rot)
+{
+	if(Rot)
+	{
+		is_up = 1;
+		SpeedRank = ABS(SpeedRank);
+		if(rS == PARKING && ControlMode != CTRL_AUTO_ROUTE)
+		{
+			SetRunState(STANDBY);
+		}
+	}
+	else
+	{
+		is_up = -1;
+		SpeedRank = -ABS(SpeedRank);
+		SetRunState(PARKING);
+	}
+
+	InitAll();
+	Org_Yaw = New_Yaw;
+	HeadingPID_Reset(&headingPID);
+	Odometry_Reset();
+	if(is_straight)
+	{
+		headingPID.CrossTrackEnable = 1;
+	}
+	is_Switch = 1;
+	OLED_StateAnim_ShowAction(MotionActionFromDirection(), ControlTicks);
+}
+
+void SetSpeedRank(int8_t level)
+{
+	if(level < 0)
+	{
+		level = 0;
+	}
+	if((uint8_t)level > SpeedLimitLevel)
+	{
+		level = (int8_t)SpeedLimitLevel;
+	}
+	if(level < 7)
+	{
+		SpeedRank = is_up * level * SPEEDSTEP;
+		if(level > 0)
+		{
+			SetSteeringAngle(Angle);
+		}
+		OLED_StateAnim_ShowAction(level == 0 ? OLED_ACTION_STOP : MotionActionFromDirection(), ControlTicks);
+	}
+}
+
+void SoftReset(void)
+{
+	__disable_irq();
+	for(int i = 0; i < 10000; i++)
+	{
+	}
+	NVIC_SystemReset();
+}

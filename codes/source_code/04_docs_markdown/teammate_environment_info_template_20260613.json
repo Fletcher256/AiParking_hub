@@ -1,0 +1,120 @@
+{
+  "schema": "teammate_environment_info.v1",
+  "purpose": "Fill this file so Cheng/Codex can copy and configure the autopark project on the teammate computer with explicit consent.",
+  "do_not_include": [
+    "OpenAI or Codex account password",
+    "browser cookies",
+    "personal SSH private keys",
+    "unrelated personal passwords"
+  ],
+  "consent": {
+    "teammate_name": "",
+    "teammate_contact": "",
+    "permission_statement": "I allow Cheng/Codex to connect to this computer by SSH for the purpose of copying and configuring the parking_board_agent project.",
+    "allowed_time_window": "",
+    "can_run_read_only_checks": true,
+    "can_copy_project_files": true,
+    "can_create_python_venv": true,
+    "can_install_python_packages": false,
+    "can_install_system_software": false,
+    "can_modify_firewall_or_network": false,
+    "can_reboot_computer": false
+  },
+  "teammate_windows_host": {
+    "os_version": "",
+    "computer_name": "",
+    "lan_ip": "",
+    "ssh_port": 22,
+    "ssh_username": "",
+    "ssh_auth_method": "password_or_public_key",
+    "ssh_password_if_using_temporary_password": "",
+    "target_project_path": "D:\\parking_board_agent",
+    "has_powershell": true,
+    "has_python": false,
+    "python_version_if_known": "",
+    "has_git": false,
+    "has_7zip_or_zip_tool": false,
+    "has_x_anylabeling": false,
+    "x_anylabeling_path_if_installed": ""
+  },
+  "teammate_vm": {
+    "has_vm": true,
+    "vm_software": "",
+    "vm_os": "Ubuntu",
+    "vm_ip": "",
+    "vm_ssh_port": 22,
+    "vm_username": "",
+    "vm_password_if_using_temporary_password": "",
+    "has_ros2_humble": false,
+    "has_parking_ws": false,
+    "parking_ws_path": "~/parking_ws",
+    "has_ffmpeg": false,
+    "has_python3_opencv": false,
+    "notes_about_vm_differences": ""
+  },
+  "network_plan": {
+    "desired_windows_ethernet_ip": "192.168.137.1",
+    "desired_board_ip": "192.168.137.2",
+    "desired_vm_ip": "192.168.137.100",
+    "can_use_same_192_168_137_subnet": true,
+    "if_not_same_subnet_describe_actual_network": "",
+    "board_ssh_reachable_from_teammate_windows": false,
+    "vm_ssh_reachable_from_teammate_windows": false,
+    "udp_ports_available": {
+      "yolo_detection_udp_24580": false,
+      "yolo_image_udp_24581": false,
+      "internal_tee_udp_24579": false
+    }
+  },
+  "board_access": {
+    "board_type": "Euler Pi / SS928",
+    "board_ip": "",
+    "board_ssh_port": 22,
+    "board_username": "root",
+    "board_password": "",
+    "board_autopark_dir": "/opt/parking/autopark",
+    "board_yolo_dir": "/opt/sample/parking_yolo_seg_safe",
+    "can_reboot_board": false,
+    "can_start_or_restart_yolo": false,
+    "can_run_no_motion_dryrun": true,
+    "can_send_stm32_safe_queries_ping_ver_stat_stop": false,
+    "can_send_motion_or_servo_commands": false
+  },
+  "stm32_and_vehicle": {
+    "stm32_connected_to_board": false,
+    "stm32_serial_device_on_board": "/dev/ttyUSB0",
+    "stm32_baud": 9600,
+    "stlink_available": false,
+    "stlink_connected_to_teammate_windows": false,
+    "can_flash_stm32": false,
+    "current_firmware_source_path": "D:\\parking_board_agent\\SS928_hub",
+    "vehicle_available_for_testing": false,
+    "human_can_watch_vehicle_during_motion": false,
+    "allowed_real_motion_tests": false
+  },
+  "hardware_status_to_confirm": {
+    "servo_model": "TBS-K20 or equivalent 20kg PWM servo",
+    "servo_power_supply_voltage_v": "",
+    "servo_power_supply_current_rating_a": "",
+    "servo_power_supply_output_drops_under_load": "",
+    "servo_current_issue_observed": "On Cheng's car, connected servo caused regulator output to drop to about 3V and servo internal chip heated; do not repeat SERVO tests until power/servo is checked.",
+    "servo_test_allowed_on_teammate_hardware": false,
+    "camera_connected": false,
+    "parking_slot_frame_available": false
+  },
+  "files_to_receive": {
+    "receive_project_bundle": true,
+    "receive_x_anylabeling_bundle_or_install_separately": false,
+    "receive_training_frames": true,
+    "receive_artifacts_autopark_baseline": true,
+    "preferred_transfer_method": "scp_or_zip",
+    "temporary_drop_path_on_teammate_windows": "D:\\parking_board_agent_handoff.zip"
+  },
+  "post_setup_checks_to_run": {
+    "windows_python_check": ".venv\\Scripts\\python --version",
+    "board_ssh_check": ".venv\\Scripts\\python tools\\board_auto_ssh.py run --host <board_ip> --no-scan-subnets \"whoami\"",
+    "vm_ssh_check": ".venv\\Scripts\\python tools\\vm_ssh_run.py --host <vm_ip> run \"whoami && hostname\"",
+    "no_motion_controller_compile_check": ".venv\\Scripts\\python -m py_compile tools\\board_parking_controller.py tools\\perception_noise_profile.py tools\\test_perception_filter.py"
+  },
+  "additional_notes_from_teammate": ""
+}

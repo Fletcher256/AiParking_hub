@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<Partition_Info ProgrammerFile="">
+<Part Sel="1" PartitionName="fastboot" FlashType="emmc" FileSystem="none" Start="0" Length="512K" SelectFile="boot_image_4G.bin"/>
+<Part Sel="1" PartitionName="env" FlashType="emmc" FileSystem="none" Start="512K" Length="512K" SelectFile="uboot_env_4G.bin"/>
+<Part Sel="1" PartitionName="logo" FlashType="emmc" FileSystem="none" Start="1M" Length="1M" SelectFile="logo.bin"/>
+<Part Sel="1" PartitionName="kernel" FlashType="emmc" FileSystem="none" Start="2M" Length="20M" SelectFile="uImage_ss928v100"/>
+<Part Sel="1" PartitionName="rootfs" FlashType="emmc" FileSystem="ext3/4" Start="22M" Length="-" SelectFile="rootfs.ext4"/>
+</Partition_Info>

@@ -1,0 +1,381 @@
+{
+  "schema": "parking_action_library.v1",
+  "version": "2026-06-30-diy-balanced-action-library",
+  "units": {
+    "distance": "cm",
+    "servo": "deg",
+    "pixel": "px",
+    "heading": "deg"
+  },
+  "scoring": {
+    "target": {
+      "slot_x_err_px": 0.0,
+      "slot_heading_err_deg": 0.0,
+      "slot_lateral_cm": 0.0,
+      "min_margin_px": 90.0,
+      "slot_y_dist_cm": 8.0
+    },
+    "weights": {
+      "slot_x_err_abs": 1.0,
+      "slot_heading_err_abs": 4.0,
+      "slot_lateral_abs": 8.0,
+      "progress": 0.35,
+      "min_margin_shortfall": 2.5,
+      "line_risk": 1000.0,
+      "phase_mismatch": 25.0,
+      "low_confidence": 20.0,
+      "uncalibrated": 15.0,
+      "large_steer": 3.0
+    }
+  },
+  "actions": [
+    {
+      "id": "reverse_straight_6",
+      "command": "ARC D=-6.0 STE=100 V=1",
+      "kind": "reverse_straight",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": false,
+      "servo": 100,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor",
+        "straighten_or_enter"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -4.0,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.0,
+        "slot_heading_err_deg": 0.0,
+        "min_margin_px": -2.0
+      },
+      "prior_confidence": 0.35,
+      "notes": "Use as the neutral baseline with explicit STE=100 center. Do not rely on bare MOVE for straight parking control, because the firmware implicit center may not match the measured mechanical center."
+    },
+    {
+      "id": "reverse_straight_4",
+      "command": "ARC D=-4.0 STE=100 V=1",
+      "kind": "reverse_straight",
+      "distance_cm": 4.0,
+      "max_promote_cm": 4.0,
+      "requires_measured": false,
+      "servo": 100,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor",
+        "straighten_or_enter"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.7,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.0,
+        "slot_heading_err_deg": 0.0,
+        "min_margin_px": -1.3
+      },
+      "prior_confidence": 0.35,
+      "notes": "Short neutral reverse transition for terminal approach. Keeps explicit STE=100 center and can be used where the 6cm baseline is too coarse."
+    },
+    {
+      "id": "reverse_left_hard_6",
+      "command": "ARC D=-6.0 STE=60 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 60,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -4.445,
+        "slot_x_err_px": 41.9,
+        "slot_lateral_cm": -2.664,
+        "slot_heading_err_deg": -0.979,
+        "min_margin_px": -0.51
+      },
+      "prior_confidence": 0.55,
+      "notes": "C2 2026-06-13: valid strong left-arc sample. Improved x_err -51.9px toward center; older 2026-06-12 sample worsened x_err +18px, so rely on bucketed measured response when available."
+    },
+    {
+      "id": "reverse_left_hard_4",
+      "command": "ARC D=-4.0 STE=60 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 4.0,
+      "max_promote_cm": 4.0,
+      "requires_measured": true,
+      "servo": 60,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.963,
+        "slot_x_err_px": 27.933,
+        "slot_lateral_cm": -1.776,
+        "slot_heading_err_deg": -0.653,
+        "min_margin_px": -0.34
+      },
+      "prior_confidence": 0.4,
+      "notes": "Short left-arc transition derived from the measured 6cm hard-left sample and Stage 2 effective 4cm arc checks. It remains measured-only for real motion until this exact action/bucket is probed."
+    },
+    {
+      "id": "reverse_left_soft_6",
+      "command": "ARC D=-6.0 STE=75 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 75,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.345,
+        "slot_x_err_px": -19.7,
+        "slot_lateral_cm": 1.138,
+        "slot_heading_err_deg": -0.514,
+        "min_margin_px": -26.373
+      },
+      "prior_confidence": 0.35,
+      "notes": "C2 2026-06-13: measured at x_err -30.5px and worsened lateral/x error. Keep available but let scoring penalize its predicted risk."
+    },
+    {
+      "id": "reverse_left_mid_strong_6",
+      "command": "ARC D=-6.0 STE=80 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 80,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -5.967,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": -0.4,
+        "slot_heading_err_deg": -2.667,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.55,
+      "notes": "2026-06-30 from85 rerun: measured left mid-strong; n=3, mean yaw=-2.666667deg, mean progress=5.966667cm, deg_per_cm=-0.446691. Fills the 75-to-90 gap."
+    },
+    {
+      "id": "reverse_left_mid_6",
+      "command": "ARC D=-6.0 STE=85 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 85,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor",
+        "straighten_or_enter"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -5.533,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": -0.067,
+        "slot_heading_err_deg": -1.6,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.6,
+      "notes": "2026-06-30 from85 rerun: measured primary left-mid correction; n=3, mean yaw=-1.600000deg, mean progress=5.533333cm, deg_per_cm=-0.288978."
+    },
+    {
+      "id": "reverse_left_light_6",
+      "command": "ARC D=-6.0 STE=90 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 90,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor",
+        "straighten_or_enter"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -4.167,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.0,
+        "slot_heading_err_deg": -0.433,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.55,
+      "notes": "2026-06-30 left correction validation: measured left-light; n=3, mean yaw=-0.433333deg, mean progress=4.166667cm, deg_per_cm=-0.103839."
+    },
+    {
+      "id": "reverse_right_soft_6",
+      "command": "ARC D=-6.0 STE=105 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 105,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.241,
+        "slot_x_err_px": -36.863,
+        "slot_lateral_cm": 2.656,
+        "slot_heading_err_deg": 3.494,
+        "min_margin_px": -3.927
+      },
+      "prior_confidence": 0.4,
+      "notes": "C2 2026-06-13: measured weak right arc. From small positive x_err it crossed center and worsened lateral error; useful as cautious right correction only with bucket match."
+    },
+    {
+      "id": "reverse_right_mid_6",
+      "command": "ARC D=-6.0 STE=110 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 110,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor",
+        "straighten_or_enter"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -4.1,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.05,
+        "slot_heading_err_deg": 1.5,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.55,
+      "notes": "2026-06-30 chassis action set validation: measured right-mid; n=2, mean yaw=+1.500000deg, mean progress=4.1cm, deg_per_cm=+0.365854."
+    },
+    {
+      "id": "reverse_right_hard_6",
+      "command": "ARC D=-6.0 STE=120 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 6.0,
+      "max_promote_cm": 6.0,
+      "requires_measured": true,
+      "servo": 120,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.7,
+        "slot_x_err_px": -28.0,
+        "slot_lateral_cm": 1.67,
+        "slot_heading_err_deg": 1.8,
+        "min_margin_px": 0.0
+      },
+      "prior_confidence": 0.5,
+      "notes": "C2 2026-06-13: two valid strong right-arc samples, TLM R_eff about 86-90cm. Pixel delta is perspective-sensitive, so keep bucketed measured response preferred."
+    },
+    {
+      "id": "reverse_right_hard_4",
+      "command": "ARC D=-4.0 STE=120 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 4.0,
+      "max_promote_cm": 4.0,
+      "requires_measured": true,
+      "servo": 120,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -1.8,
+        "slot_x_err_px": -18.667,
+        "slot_lateral_cm": 1.113,
+        "slot_heading_err_deg": 1.2,
+        "min_margin_px": 0.0
+      },
+      "prior_confidence": 0.4,
+      "notes": "Short right-arc transition derived from the measured 6cm hard-right sample and Stage 2 effective 4cm arc checks. It remains measured-only for real motion until this exact action/bucket is probed."
+    },
+    {
+      "id": "reverse_right_extreme_4",
+      "command": "ARC D=-4.0 STE=130 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 4.0,
+      "max_promote_cm": 4.0,
+      "requires_measured": true,
+      "servo": 130,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.133,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.0,
+        "slot_heading_err_deg": 1.767,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.45,
+      "notes": "2026-06-30 experimental high-right correction; 3 valid D=-4 samples, mean DONE.D=2.133cm, mean yaw=1.767deg, mean deg_per_cm(DONE.D)=0.825397. Prior STE=140 cable-snag anomaly excluded as external obstruction."
+    },
+    {
+      "id": "reverse_right_ultra_4",
+      "command": "ARC D=-4.0 STE=140 V=1",
+      "kind": "reverse_arc",
+      "distance_cm": 4.0,
+      "max_promote_cm": 4.0,
+      "requires_measured": true,
+      "servo": 140,
+      "allowed_phases": [
+        "approach_entry",
+        "align_in_corridor"
+      ],
+      "prior_delta": {
+        "slot_y_dist_cm": -2.067,
+        "slot_x_err_px": 0.0,
+        "slot_lateral_cm": 0.0,
+        "slot_heading_err_deg": 1.7,
+        "min_margin_px": -1.0
+      },
+      "prior_confidence": 0.45,
+      "notes": "2026-06-30 experimental ultra-right correction; 3 valid D=-4 samples, mean DONE.D=2.067cm, mean yaw=1.700deg, mean deg_per_cm(DONE.D)=0.825397. Prior STE=140 cable-snag anomaly excluded as external obstruction."
+    }
+  ],
+  "change_log": [
+    {
+      "date": "2026-06-30",
+      "change": "remove_3cm_actions_add_ste130_140_d4",
+      "removed_action_ids": [
+        "reverse_left_hard_3",
+        "reverse_right_hard_3"
+      ],
+      "added_action_ids": [
+        "reverse_right_extreme_4",
+        "reverse_right_ultra_4"
+      ],
+      "source_artifacts": [
+        "artifacts/chassis_action_set_validation/ste130_140_round2_d4_20260630_155025/ste130_140_round2_d4_clean.json",
+        "artifacts/chassis_action_set_validation/ste130_140_round3_d4_20260630_155608/ste130_140_round3_d4_clean.json"
+      ],
+      "distance_source": "DONE.D"
+    },
+    {
+      "date": "2026-06-30",
+      "change": "add_balanced_measured_actions_to_library",
+      "added_action_ids": [
+        "reverse_left_mid_strong_6",
+        "reverse_left_mid_6",
+        "reverse_left_light_6",
+        "reverse_right_mid_6"
+      ],
+      "reason": "Keep parking_action_library aligned with diy_first_frame_path_parking default candidates and chassis_kinematics rows.",
+      "source_artifacts": [
+        "artifacts/left_correction_action_validation/from85_rerun_20260630_165053",
+        "artifacts/left_correction_action_validation/20260630_163900",
+        "artifacts/chassis_action_set_validation/20260630_151633"
+      ]
+    }
+  ]
+}

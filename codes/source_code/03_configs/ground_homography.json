@@ -1,0 +1,129 @@
+{
+  "schema": "parking.ground_homography.v1",
+  "version": "2026-07-02-user-validated-physical-slot-corners",
+  "valid": true,
+  "candidate_only_requires_static_validation": false,
+  "input_pixel_domain": "raw_yolo_px",
+  "output_ground_frame": "vehicle_rear_axle_cm",
+  "image_size": [
+    640,
+    640
+  ],
+  "H_pixel_to_ground_cm": [
+    [
+      -0.00718133959,
+      -0.0567405867,
+      160.804706
+    ],
+    [
+      -0.326903714,
+      -0.00634653397,
+      104.842488
+    ],
+    [
+      -0.000359066979,
+      0.0105474484,
+      1.0
+    ]
+  ],
+  "H_user_pixel_to_ground_xy_cm": [
+    [
+      0.326903714,
+      0.00634653397,
+      -104.842488
+    ],
+    [
+      -0.00718133959,
+      -0.0567405867,
+      160.804706
+    ],
+    [
+      -0.000359066979,
+      0.0105474484,
+      1.0
+    ]
+  ],
+  "fit_method": "user-provided 4-point homography from YOLO 640x640 pixels to physical slot coordinates; converted to controller [depth,left] frame",
+  "source": {
+    "source_description": "User-provided known-good coordinate mapping screenshot; same physical slot coordinate convention as Image #1 in thread.",
+    "preview_source_image": "D:\\parking_board_agent\\artifacts\\current_camera_yolo\\20260702_001023\\camera_raw_yolo_input_640.jpg",
+    "max_reprojection_error_cm_user_xy": 6.103338710041909e-05
+  },
+  "coordinate_convention": {
+    "user_ground_xy_cm": "[X_right_cm, Y_near_far_cm] as shown in user validation figure",
+    "controller_ground_cm": "[depth_reverse_toward_slot_cm, left_cm] = [Y_user_cm, -X_user_cm]",
+    "output_ground_frame": "vehicle_rear_axle_cm",
+    "input_pixel_domain": "raw_yolo_px"
+  },
+  "point_pairs": [
+    {
+      "id": "far_left",
+      "image_raw_px": [
+        201.38,
+        203.953
+      ],
+      "user_ground_xy_cm": [
+        -12.25,
+        48.0
+      ],
+      "ground_cm": [
+        48.0,
+        12.25
+      ],
+      "mapping_label": "far_left_A"
+    },
+    {
+      "id": "far_right",
+      "image_raw_px": [
+        430.583,
+        208.046
+      ],
+      "user_ground_xy_cm": [
+        12.25,
+        48.0
+      ],
+      "ground_cm": [
+        48.0,
+        -12.25
+      ],
+      "mapping_label": "far_right_B"
+    },
+    {
+      "id": "near_right",
+      "image_raw_px": [
+        548.492,
+        526.0
+      ],
+      "user_ground_xy_cm": [
+        12.25,
+        20.0
+      ],
+      "ground_cm": [
+        20.0,
+        -12.25
+      ],
+      "mapping_label": "near_right_C"
+    },
+    {
+      "id": "near_left",
+      "image_raw_px": [
+        66.02,
+        526.0
+      ],
+      "user_ground_xy_cm": [
+        -12.25,
+        20.0
+      ],
+      "ground_cm": [
+        20.0,
+        12.25
+      ],
+      "mapping_label": "near_left_D"
+    }
+  ],
+  "notes": [
+    "Do not infer far/near from image top-left order at runtime; use fitted quad only as image points, then project through this H.",
+    "This file intentionally stores both user XY H and controller-converted H to prevent coordinate-convention confusion.",
+    "No bbox path is introduced; intended input remains YOLO mask_polygon/fitted quad points."
+  ]
+}

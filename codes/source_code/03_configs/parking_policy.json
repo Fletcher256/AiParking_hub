@@ -1,0 +1,54 @@
+{
+  "actions": [],
+  "counts": {
+    "far|right_large|straight||ARC D=-7.0 STE=130 V=1": 1,
+    "far|right_large|straight||ARC D=-7.0 STE=90 V=1": 1,
+    "far|right_small|straight||ARC D=-7.0 STE=100 V=1": 1,
+    "far|right_small|straight||ARC D=-7.0 STE=110 V=1": 1,
+    "far|right_small|straight||MOVE D=-7.0 V=1": 1
+  },
+  "episodes": 16,
+  "notes": [
+    "2026-06-30: pruned stale D=-3cm learned-policy actions from local config; current DIY path uses >=4cm short steps."
+  ],
+  "q": {
+    "far|right_large|straight": {
+      "ARC D=-7.0 STE=100 V=1": 0.0,
+      "ARC D=-7.0 STE=110 V=1": 0.0,
+      "ARC D=-7.0 STE=120 V=1": 0.0,
+      "ARC D=-7.0 STE=130 V=1": 0.35,
+      "ARC D=-7.0 STE=50 V=1": 0.0,
+      "ARC D=-7.0 STE=60 V=1": 0.0,
+      "ARC D=-7.0 STE=70 V=1": 0.0,
+      "ARC D=-7.0 STE=80 V=1": 0.0,
+      "ARC D=-7.0 STE=90 V=1": 0.0,
+      "MOVE D=-7.0 V=1": 0.0
+    },
+    "far|right_small|straight": {
+      "ARC D=-7.0 STE=100 V=1": -0.35,
+      "ARC D=-7.0 STE=110 V=1": 0.35,
+      "ARC D=-7.0 STE=120 V=1": 0.0,
+      "ARC D=-7.0 STE=130 V=1": 0.0,
+      "ARC D=-7.0 STE=50 V=1": 0.0,
+      "ARC D=-7.0 STE=60 V=1": 0.0,
+      "ARC D=-7.0 STE=70 V=1": 0.0,
+      "ARC D=-7.0 STE=80 V=1": 0.0,
+      "ARC D=-7.0 STE=90 V=1": 0.0,
+      "MOVE D=-7.0 V=1": -0.35
+    },
+    "mid|right_small|straight": {
+      "ARC D=-7.0 STE=100 V=1": 0.0,
+      "ARC D=-7.0 STE=110 V=1": 0.0,
+      "ARC D=-7.0 STE=120 V=1": 0.0,
+      "ARC D=-7.0 STE=130 V=1": 0.0,
+      "ARC D=-7.0 STE=50 V=1": 0.0,
+      "ARC D=-7.0 STE=60 V=1": 0.0,
+      "ARC D=-7.0 STE=70 V=1": 0.0,
+      "ARC D=-7.0 STE=80 V=1": 0.0,
+      "ARC D=-7.0 STE=90 V=1": 0.0,
+      "MOVE D=-7.0 V=1": 0.0
+    }
+  },
+  "rollouts": 2,
+  "schema_version": 1
+}

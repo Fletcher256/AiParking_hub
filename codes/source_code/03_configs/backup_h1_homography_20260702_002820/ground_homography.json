@@ -1,0 +1,190 @@
+{
+  "schema": "parking.ground_homography.v1",
+  "version": "2026-07-01-yolo-quad-physical-slot-corners-runtime-tilt30",
+  "valid": true,
+  "candidate_only_requires_static_validation": false,
+  "input_pixel_domain": "raw_yolo_px",
+  "output_ground_frame": "vehicle_rear_axle_cm",
+  "image_size": [
+    640,
+    640
+  ],
+  "H_pixel_to_ground_cm": [
+    [
+      -1.3273005627718104,
+      -3.4469759518459337,
+      1816.459045158681
+    ],
+    [
+      -3.650629706301647,
+      1.0027148035636229,
+      595.2629741200705
+    ],
+    [
+      0.02514822879407384,
+      0.14525603351104116,
+      1.0
+    ]
+  ],
+  "H_ground_cm_to_pixel": [
+    [
+      6.141981251173074,
+      -19.21002596620148,
+      278.3597906765131
+    ],
+    [
+      -1.3382004398504108,
+      3.378339440138222,
+      419.78591047779287
+    ],
+    [
+      0.039921738181988985,
+      -0.007626058790255358,
+      1.0
+    ]
+  ],
+  "fit_method": "cv2.findHomography(method=0) from 4 YOLO fitted quad corners to manually measured slot physical corners",
+  "source": {
+    "source_log": "/opt/parking/autopark/logs/reverse_video_20260721_011316.jsonl",
+    "confidence": 0.9551,
+    "quad_fit_status": "complete",
+    "quad_fit_score": 0.869,
+    "quad_fit_source": "max_area_line_fit"
+  },
+  "coordinate_convention": {
+    "project_ground_point": "[x_forward_or_reverse_toward_slot_cm, y_left_cm]",
+    "user_raw_physical_points_assumption": "raw horizontal is right-positive; converted to y_left=-raw_x",
+    "pixel_corner_order": "computed_corners_px clockwise from top-left, inferred as far_left, far_right, near_right, near_left"
+  },
+  "point_pairs": [
+    {
+      "id": "far_left",
+      "image_raw_px": [
+        119.362,
+        140.696
+      ],
+      "ground_cm": [
+        48.0,
+        12.3
+      ],
+      "user_physical_raw_cm": [
+        -12.3,
+        48.0
+      ]
+    },
+    {
+      "id": "far_right",
+      "image_raw_px": [
+        268.919,
+        104.317
+      ],
+      "ground_cm": [
+        48.0,
+        -12.3
+      ],
+      "user_physical_raw_cm": [
+        12.3,
+        48.0
+      ]
+    },
+    {
+      "id": "near_right",
+      "image_raw_px": [
+        336.894,
+        185.742
+      ],
+      "ground_cm": [
+        20.0,
+        -12.3
+      ],
+      "user_physical_raw_cm": [
+        12.3,
+        20.0
+      ]
+    },
+    {
+      "id": "near_left",
+      "image_raw_px": [
+        96.746,
+        254.938
+      ],
+      "ground_cm": [
+        20.0,
+        12.3
+      ],
+      "user_physical_raw_cm": [
+        -12.3,
+        20.0
+      ]
+    }
+  ],
+  "reprojection_error_cm": {
+    "per_point": [
+      1e-06,
+      1e-06,
+      1e-06,
+      0.0
+    ],
+    "mean": 1e-06,
+    "max": 1e-06,
+    "note": "Zero/near-zero expected with exactly 4 point pairs; does not prove real accuracy."
+  },
+  "old_runtime_homography_comparison": {
+    "old_runtime_corners_cm": [
+      [
+        51.888,
+        13.639
+      ],
+      [
+        55.233,
+        4.397
+      ],
+      [
+        47.606,
+        0.135
+      ],
+      [
+        41.388,
+        14.94
+      ]
+    ],
+    "old_vs_new_ground_error_cm_per_corner": [
+      4.112,
+      18.196,
+      30.277,
+      21.55
+    ],
+    "old_pose_at_lock": {
+      "y_dist_cm": 60.722,
+      "lateral_cm": 0.264,
+      "heading_deg": 9.279
+    }
+  },
+  "derived_slot_geometry_cm": {
+    "slot_width_cm": 24.6,
+    "slot_depth_cm": 28.0,
+    "slot_center_cm": [
+      34.0,
+      0.0
+    ],
+    "slot_axis_heading_deg": 0.0
+  },
+  "camera_mount_user_measurement": {
+    "camera_position_project_cm": [
+      7.75,
+      -0.6
+    ],
+    "camera_tilt_from_vertical_deg": 30.0,
+    "camera_pitch_from_horizontal_deg_if_optical_axis_downward": 60.0
+  },
+  "runtime_policy": {
+    "do_not_deploy_automatically": false,
+    "requires_validation": "user_requested_formal_board_adaptation; monitor static pose and reverse logs for final tuning"
+  },
+  "runtime_adaptation": {
+    "status": "formalized_for_board_runtime",
+    "date": "2026-07-01",
+    "note": "Use raw YOLO fitted mask quad points directly with this homography; do not undistort unless this file is recalibrated in undistorted_px domain.",
+    "tilt_correction_note": "2026-07-01: user corrected camera tilt to 30deg from vertical; current H_pixel_to_ground_cm remains the four-point fitted homography and does not directly use this metadata."
+  }
+}

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd /opt/ko
+./load_ss928v100 -i -sensor0 os08a20

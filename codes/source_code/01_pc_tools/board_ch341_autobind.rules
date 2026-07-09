@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="usb_device", RUN+="/etc/udev/ch341-autobind.sh"

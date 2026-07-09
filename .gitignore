@@ -1,0 +1,47 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Build products and generated outputs
+build/
+dist/
+install/
+log/
+logs/
+outputs/
+artifacts/
+*.o
+*.obj
+*.elf
+*.bin
+*.hex
+*.map
+*.axf
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large deployment/runtime artifacts that should not be added accidentally
+*.img
+*.iso
+*.rootfs
+*.tar
+*.tar.gz
+*.zip
+*.rar
+*.7z
+*.mp4
+*.avi
+*.mov
+
+# Keep the submitted YOLO model files; do not globally ignore *.pt or *.onnx.
+

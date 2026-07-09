@@ -1,0 +1,37 @@
+{
+  "schema": "perception_filter.v1",
+  "required_frames": 5,
+  "gate_center_shift_cm": 4.0,
+  "gate_yaw_shift_deg": 8.0,
+  "gate_static_scale": 0.5,
+  "outlier_accept_consecutive": 3,
+  "hold_grace_sec": 2.5,
+  "hold_max_frames": 10,
+  "divergence_debounce_frames": 2,
+  "line_risk_debounce_frames": 1,
+  "post_motion_guard_enabled": true,
+  "post_motion_guard_frames": 5,
+  "post_motion_guard_max_heading_jump_deg": 12.0,
+  "post_motion_guard_max_lateral_jump_cm": 6.0,
+  "post_motion_guard_near_y_dist_cm": 35.0,
+  "notes": "thresholds derived from controller JSONL logs; line_risk intentionally not debounced; post_motion_guard rejects near-range polygon edge flips after motion reset",
+  "line_accumulator": {
+    "enabled": false,
+    "use_for_planning": false,
+    "motion_capture": false,
+    "min_track_weight": 3.0,
+    "max_track_age_sec": 8.0,
+    "decay_per_sec": 0.85,
+    "moving_weight_scale": 0.7,
+    "merge_angle_deg": 8.0,
+    "merge_distance_cm": 5.0,
+    "merge_overlap_ratio": 0.35,
+    "require_edges_for_fused": [
+      "left_edge",
+      "right_edge",
+      "entrance_edge",
+      "back_edge"
+    ],
+    "require_recent_raw_detection_sec": 0.7
+  }
+}

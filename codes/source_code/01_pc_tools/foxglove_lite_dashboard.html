@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parking Foxglove-lite Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #111418;
+      color: #e8edf2;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      border-bottom: 1px solid #2b323b;
+      background: #161b21;
+    }
+    input {
+      min-width: 310px;
+      background: #0d1014;
+      border: 1px solid #3b4652;
+      color: #e8edf2;
+      padding: 7px 9px;
+      border-radius: 4px;
+    }
+    button {
+      background: #245db8;
+      border: 0;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    main {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      min-height: 0;
+    }
+    section {
+      border: 1px solid #2b323b;
+      background: #171c22;
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    h2 {
+      font-size: 14px;
+      margin: 0;
+      padding: 8px 10px;
+      border-bottom: 1px solid #2b323b;
+      color: #cbd5df;
+      font-weight: 600;
+    }
+    .image-wrap {
+      min-height: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: #090b0e;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    pre {
+      margin: 0;
+      padding: 10px;
+      overflow: auto;
+      white-space: pre-wrap;
+      font-size: 12px;
+      line-height: 1.4;
+      color: #d5dde6;
+    }
+    #status {
+      margin-left: auto;
+      font-size: 13px;
+      color: #9fb0c3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <strong>Parking Foxglove-lite</strong>
+    <input id="url" value="ws://192.168.247.129:8765" />
+    <button id="connect">Connect</button>
+    <span id="status">disconnected</span>
+  </header>
+  <main>
+    <section>
+      <h2>Camera</h2>
+      <div class="image-wrap"><img id="camera" alt="camera" /></div>
+    </section>
+    <section>
+      <h2>dToF Depth Preview</h2>
+      <div class="image-wrap"><img id="dtof" alt="dtof" /></div>
+    </section>
+    <section>
+      <h2>Composite Preview</h2>
+      <div class="image-wrap"><img id="composite" alt="composite" /></div>
+    </section>
+    <section>
+      <h2>Health / Metadata</h2>
+      <pre id="text">Waiting for messages...</pre>
+    </section>
+  </main>
+  <script>
+    const channels = new Map();
+    const status = document.getElementById("status");
+    const text = document.getElementById("text");
+    const images = {
+      "/parking/camera/image": document.getElementById("camera"),
+      "/parking/dtof/preview": document.getElementById("dtof"),
+      "/parking/preview/composite": document.getElementById("composite"),
+    };
+    const latest = {};
+
+    function renderText() {
+      text.textContent = JSON.stringify(latest, null, 2);
+    }
+
+    function handlePayload(topic, payload) {
+      const msg = JSON.parse(new TextDecoder().decode(payload));
+      if (images[topic]) {
+        images[topic].src = `data:image/${msg.format};base64,${msg.data}`;
+      } else {
+        latest[topic] = msg;
+        renderText();
+      }
+    }
+
+    function connect() {
+      const ws = new WebSocket(document.getElementById("url").value, "foxglove.websocket.v1");
+      ws.binaryType = "arraybuffer";
+      status.textContent = "connecting";
+      ws.onopen = () => { status.textContent = "connected"; };
+      ws.onclose = () => { status.textContent = "disconnected"; };
+      ws.onerror = () => { status.textContent = "error"; };
+      ws.onmessage = (event) => {
+        if (typeof event.data === "string") {
+          const msg = JSON.parse(event.data);
+          if (msg.op === "advertise") {
+            const subs = msg.channels.map((channel) => {
+              channels.set(channel.id, channel.topic);
+              return { id: channel.id, channelId: channel.id };
+            });
+            ws.send(JSON.stringify({ op: "subscribe", subscriptions: subs }));
+          }
+          return;
+        }
+        const data = new Uint8Array(event.data);
+        if (data[0] !== 1) return;
+        const view = new DataView(event.data);
+        const subscriptionId = view.getUint32(1, true);
+        const topic = channels.get(subscriptionId);
+        if (!topic) return;
+        handlePayload(topic, data.slice(13));
+      };
+    }
+
+    document.getElementById("connect").addEventListener("click", connect);
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Static IP for host PC (192.168.137.x subnet)
+ip addr add 192.168.137.2/24 dev eth0 2>/dev/null
+
+# Load kernel modules
+cd /opt/ko
+./load_ss928v100 -i -sensor0 os08a20
+
+# GPIO/PWM init for GS1860 dToF
+cd /opt/sample/dtof
+sh ./dtof_init.sh
+
+# Start combined camera (OS08A20 sensor0) + dToF (GS1860 sensor2) mode
+sleep 7200 | ./sample_dtof_os08a20 3 192.168.137.100 &

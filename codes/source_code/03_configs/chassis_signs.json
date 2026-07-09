@@ -1,0 +1,33 @@
+{
+  "schema": "chassis_signs.v1",
+  "verified_date": "2026-06-22",
+  "field_verified_dates": {
+    "yaw_cw_positive": "2026-06-21",
+    "odom_d_reverse_negative": "2026-06-21",
+    "odom_x_right_positive": "2026-06-21",
+    "vision_lateral_left_negative": "2026-06-22"
+  },
+  "yaw_cw_positive": true,
+  "odom_d_reverse_negative": false,
+  "odom_x_right_positive": true,
+  "vision_lateral_left_negative": true,
+  "evidence": {
+    "static_yaw_report": "artifacts/autopark_baseline/c0_yaw_static_retest_after_user_update_20260613.json",
+    "s1_yaw_static_rebuild_report": "artifacts/autopark_rebuild_stage1/s1_yaw_static_20260621_s1_yaw_static_query_only_rerun.json",
+    "s1_zero_yaw_post_static_report": "artifacts/autopark_rebuild_stage1/s1_yaw_static_20260621_s1_zero_yaw_post_static.json",
+    "s1_cw90_manual_report": "artifacts/autopark_rebuild_stage1/s1_yaw_cw90_manual_20260621_s1_yaw_cw90_manual_r2_summary.json",
+    "s1_t2_reverse_odom_report": "artifacts/autopark_rebuild_stage1/s1_t2_reverse_odom_20260621_summary.json",
+    "s1_t2_forward_odom_report": "artifacts/autopark_rebuild_stage1/s1_t2_forward_odom_20260621_summary.json",
+    "s1_t2_odom_sign_audit": "artifacts/autopark_rebuild_stage1/s1_t2_odom_sign_audit_20260622_003510.json",
+    "s1_t2_reverse_operator_confirmation": "Operator confirmed MOVE D=-10 V=1 physically moved backward; STM32 odometry reported STAT.D=+8.1cm, so odometry D sign is opposite the command D sign for reverse.",
+    "motion_sign_report": "artifacts/autopark_baseline/c0_motion_sign_reverse_right_20260613.json",
+    "vision_lateral_sign_report": "artifacts/autopark_rebuild_stage1/s1_t4_vision_lateral_sign_20260622_s1t4_left_right.json",
+    "reverse_right_arc": {
+      "command": "ARC D=-6.0 STE=120 V=1",
+      "done": "DONE 8521 ARC X=0.7 Y=-4.0 D=4.0 YAW=1.5",
+      "post_stat": "STAT 8523 MODE=IDLE RUN=STANDBY DIR=-1 SPD=0 ANG=90.0 YAW=1.5 X=0.8 Y=-4.4 D=4.5 VEL=0.0 DROP=0 IMU=OK"
+    },
+    "s1_t4_vision_lateral_sign_audit": "artifacts/autopark_rebuild_stage1/s1_t4_vision_lateral_sign_20260622_s1t4_left_right.json"
+  },
+  "notes": "Master rebuild update 2026-06-21: yaw_cw_positive was revalidated by S1.T1 manual clockwise-from-top 90deg rotation; measured yaw delta was +88.7deg, error vs 90deg was 1.3deg. Operator confirmed ZERO_YAW/zero-drift/hold passed. odom_d_reverse_negative was revalidated by S1.T2 reverse/forward comparison: operator confirmed MOVE D=-10 V=1 physically moved backward while final STAT.D=+8.1cm, and MOVE D=+10 V=1 produced final STAT.D=+8.2cm. Therefore STAT.D is a distance magnitude, not a signed direction source; use command sign, DIR, and signed Y for forward/backward direction. Reverse odometry D is positive, so odom_d_reverse_negative=false. odom_x_right_positive was revalidated from 2026-06-21 ARC artifacts by s1_t2_odom_sign_audit: reverse right arcs (STE>100) report positive X and reverse left arcs (STE<100) report negative X. vision_lateral_left_negative remains a historical 2026-06-13 value until its rebuild-stage test is rerun. S1.T4 rebuild-stage vision lateral sign was updated on 2026-06-22 from artifacts/autopark_rebuild_stage1/s1_t4_vision_lateral_sign_20260622_s1t4_left_right.json: vision_lateral_left_negative=True."
+}
